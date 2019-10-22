@@ -1,3 +1,3 @@
-<p>Este es un footer</p>
-</body>
+        <footer>Pagina de Lu y Octi</footer>
+    </body>
 </html>

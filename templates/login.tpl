@@ -1,16 +1,25 @@
-{include 'templates/header.tpl'}
-<body>
-    <form>
+    <form action= "enterSession" method= "POST">
         <div class="form-group">
             <label>Email address</label>
-            <input type="username" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="email" name="userEmail" placeholder="Enter email"/>
         </div>
         <div class="form-group">
             <label>Password</label>
-            <input type="password" name= "password" placeholder="Password">
+            <input type="password" name= "password" placeholder="Password"/>
         </div>
-        <button type="submit">Enviar</button>
+        <button type="submit">Iniciar Sesión</button>
     </form>
-</body>
-{include 'templates/footer.tpl'}
+
+{* copiado de ejercicio web *}
+{* {include file="header.tpl"}
+
+<form action="enterSesion" method="post">
+    <input type="text" name="user" placeholder="Usuario">
+    <input type="password" name="pass" placeholder="Password">
+    <input type="submit" value="LogIn">
+</form>
+
+{include file="footer.tpl"} *}
+
+
+
