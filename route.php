@@ -8,6 +8,7 @@ define("LOGIN", BASE_URL . 'login');
 
 $action = $_GET['action'];//tomo el valor del action (accion que haga el usuario)
 $genderController = new GenderController();
+$controllerLogin = new LoginController();
 //hago un objeto de la class GenderController
 //$serieController = new SerieController();
     if($action==''){//si action es nulo se muestra el index por defecto
@@ -16,11 +17,14 @@ $genderController = new GenderController();
     elseif(isset($action)){
         //si el action está seteado
         $url = explode("/", $action);//divido con el explode un string en un array de strings
-            if($action == 'login'){
-                $controller = new LoginController();
-                $controller -> showLogin();
+            if($url[0] == 'login'){
+                $controllerLogin -> showLogin();
             }
-            if($action == 'logout'){
+            if($url[0] == 'enterSession'){
+                $controllerLogin -> verifyUser();
+            }
+
+            if($url[0] == 'logout'){
                 $controller = new LoginController();
                 $controller -> logout();
             }
