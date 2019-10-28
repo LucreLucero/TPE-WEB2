@@ -1,3 +1,5 @@
+
+
     <form action= "enterSession" method= "POST">
         <div class="form-group">
             <label>Email address</label>
@@ -8,9 +10,6 @@
             <input type="password" name= "password" placeholder="Password"/>
         </div>
         <button type="submit">Iniciar Sesión</button>
-<<<<<<< HEAD
-    </form>
-=======
     </form>
 
 {* copiado de ejercicio web *}
@@ -26,4 +25,3 @@
 
 
 
->>>>>>> c8540c285915cfb561ce755c4466d9baa4e7546f
