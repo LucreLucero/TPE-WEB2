@@ -13,6 +13,9 @@ class GenderController{
         $this->view = new GenderView();
         
     }
+    public function showIndex(){
+        $this->view->displayIndex();
+    }
     public function checkLoggedIn(){
         session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
         if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
@@ -21,17 +24,14 @@ class GenderController{
                   //die() para forzar terminar la ejecución del script.
         }
     }
-    public function showIndex(){
-        $this->view->displayIndex();
-    }
     public function getGenders(){
-        checkLoggedIn();
+        $this -> checkLoggedIn();
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $this->view->showGenders($genders);
 
     }
     public function addGender(){
-        checkLoggedIn();
+        $this -> checkLoggedIn();
         if(isset($_POST['nameGender'])){
             $nameGender= $_POST['nameGender'];
             $this->model->insertGender($nameGender);

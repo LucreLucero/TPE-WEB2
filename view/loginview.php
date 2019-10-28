@@ -19,4 +19,16 @@ class LoginView{
         //llamo a la funcion display en el template login
         $this -> smarty -> display('templates/footer.tpl');
     }
+    public function showSignIn($error = null){
+        
+        $this -> smarty -> display('templates/header.tpl');
+        
+        //creo una instancia de la clase smarty
+        $this -> smarty -> assign('titulo','Iniciar Sesión');
+        $this -> smarty -> assign('error', $error); 
+        //le paso por medio de assign el nombre de la variable (titulo) y el contenido
+        $this -> smarty -> display('templates/signIn.tpl');
+        //llamo a la funcion display en el template login
+        $this -> smarty -> display('templates/footer.tpl');
+    }
 }
