@@ -11,17 +11,3 @@
         </div>
         <button type="submit">Iniciar Sesión</button>
     </form>
-
-{* copiado de ejercicio web *}
-{* {include file="header.tpl"}
-
-<form action="enterSesion" method="post">
-    <input type="text" name="user" placeholder="Usuario">
-    <input type="password" name="pass" placeholder="Password">
-    <input type="submit" value="LogIn">
-</form>
-
-{include file="footer.tpl"} *}
-
-
-

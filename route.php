@@ -6,14 +6,16 @@ require_once ('controller/SerieController.php');
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 define("LOGIN", BASE_URL . 'login');
 define("SIGNIN", BASE_URL . 'signIn');
+define("URL_SERIE", BASE_URL . 'serie');
 
 $action = $_GET['action'];//tomo el valor del action (accion que haga el usuario)
 $genderController = new GenderController();
 $controllerLogin = new LoginController();
 //hago un objeto de la class GenderController
-//$serieController = new SerieController();
-    if($action==''){//si action es nulo se muestra el index por defecto
+$serieController = new SerieController();
+    if($action==''){//si action es nulo se muestra el index con la series
         $genderController -> showIndex();
+
     }
     elseif(isset($action)){
         //si el action está seteado
@@ -35,10 +37,12 @@ $controllerLogin = new LoginController();
                 $controller = new LoginController();
                 $controller -> logout();
             }
-        if($url[0]=='insertGender'){
-            $genderController->addGender();
-        }
-        
+            if($url[0]=='insertGender'){
+                $genderController->addGender();
+            }
+            if($action[0]=='serie'){
+                $serieController->showSerie($action[1]);
+            }    
 
     }
 

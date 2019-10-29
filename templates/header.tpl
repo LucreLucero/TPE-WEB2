@@ -9,7 +9,6 @@
         <nav>
             <h1>LAS MEJORES SERIES </h1>
 
-            <button type="button"><a href="index.tpl"><<</button>
 
             <a class="nav-item nav-link" href="login">LOGIN</a>
             <a class="nav-item nav-link" href="logout">LOGOUT</a>
