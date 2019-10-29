@@ -40,8 +40,8 @@ $serieController = new SerieController();
             if($url[0]=='insertGender'){
                 $genderController->addGender();
             }
-            if($action[0]=='serie'){
-                $serieController->showSerie($action[1]);
+            if($url[0]=='serie'){
+                $serieController->showSerie($url[1]);
             }    
 
     }

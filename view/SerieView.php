@@ -15,7 +15,7 @@ class SerieView {
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('serie', $serie);
         
-        $this->smarty->display('templates/header.tpl');
+        // $this->smarty->display('templates/header.tpl');
         $this -> smarty -> display ('templates/serieDescripcion.tpl');
         $this -> smarty -> display ('templates/footer.tpl');
         

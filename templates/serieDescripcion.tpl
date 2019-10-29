@@ -1,13 +1,13 @@
  
 
-    <ul>
+    {* <ul> *}
     <h1>DESCRIPCGF FI FOHFCESLVKÑWLJREÑLVW</h1>
-        {foreach from=$serie item=info}
+        {* {foreach from=$serie item=info} *}
        
-           <li> {$info->name} </li>          
-           <li> {$info->description} </li>          
-           <li> {$info->score} </li>     
+           <li> {$serie->name} </li>          
+           <li> {$serie->description} </li>          
+           <li> {$serie->score} </li>     
            {* <li> {$info->score} </li> ACÁ VA LA FOTO *}
            
-        {/foreach}
-    </ul>
+        {* {/foreach} *}
+    {* </ul> *}

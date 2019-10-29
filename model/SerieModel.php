@@ -18,13 +18,15 @@ class SerieModel{
     }
      
     public function getSerieDescription($serieNom){//obtener series LISTADO
-        $query = $this-> db -> prepare("SELECT * FROM series WHERE id_serie = ?");//selecciono de la tabla generos
+        $query = $this-> db -> prepare("SELECT * FROM series WHERE name = ?");//selecciono de la tabla generos
         $ok = $query -> execute(array($serieNom));
+        
         if(!$ok){
            var_dump($query->errorInfo());
            die();
         }
         $serie = $query->fetch(PDO::FETCH_OBJ);
+
         return $serie;
     }
 }
