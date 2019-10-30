@@ -9,7 +9,6 @@ class SerieView {
         $this->smarty = new Smarty();
     }
   
-
     public function showSerie($serie){
         // $this -> smarty -> assign ('error', $error);//si falla entonces que muestre "error"
         $this -> smarty -> assign ('BASE_URL', BASE_URL);

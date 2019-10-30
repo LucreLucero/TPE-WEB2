@@ -8,8 +8,7 @@ class LoginView{
         $this -> smarty = new Smarty();
     }
     public function showLogin($error = null){
-        
-        $this -> smarty -> display('templates/header.tpl');
+        // $this -> smarty -> display('templates/header.tpl');
         
         //creo una instancia de la clase smarty
         $this -> smarty -> assign('titulo','Iniciar Sesión');
@@ -19,9 +18,9 @@ class LoginView{
         //llamo a la funcion display en el template login
         $this -> smarty -> display('templates/footer.tpl');
     }
+
+//ES DE REGISTRARSE - NO ES PARA PRIMER ENTREGA
     public function showSignIn($error = null){
-        
-        $this -> smarty -> display('templates/header.tpl');
         
         //creo una instancia de la clase smarty
         $this -> smarty -> assign('titulo','Iniciar Sesión');

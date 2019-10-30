@@ -14,10 +14,10 @@ class SerieModel{
            die();
         }
         $series = $query->fetchAll(PDO::FETCH_OBJ);
-        return $series;
+        return $series; 
     }
      
-    public function getSerieDescription($serieNom){//obtener series LISTADO
+    public function getSerieDescription($serieNom){//obtener descripcion de serie
         $query = $this-> db -> prepare("SELECT * FROM series WHERE name = ?");//selecciono de la tabla generos
         $ok = $query -> execute(array($serieNom));
         

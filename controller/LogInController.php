@@ -11,18 +11,14 @@ class LoginController{
         $this-> view = new LoginView();
         $this-> model = new LoginModel();
     }
+
     public function showLogin(){
         $this-> view-> showLogin();
+        
+        // var_dump('entro aca');
+        // die();
     }
-    // CHEQUEO DE LogIn
-    public function checkLoggedIn(){
-        session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
-        if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
-            header('Location: '. LOGIN);
-            die();//Luego de una redirección se suele llamar a la función
-                      //die() para forzar terminar la ejecución del script.
-        }
-    }
+    
      //VERIFICACION DE USUARIO
     public function verifyUser(){
         $userEmail = $_POST['userEmail'];//obtengo el username del input
@@ -37,30 +33,49 @@ class LoginController{
                             
                 //si usuario no esta vacio y la password ingresada es igual a la
                 //correspondiente del usuario en la tabla en la BBDD
+                // var_dump($emailBD);
+                // die();
                 session_start();
                  //crea una sesion en el servidor, si ya existe trae la existente
                 //llamar siempre antes de acceder/almacenar un dato
-                var_dump($emailBD->pass);
-                die();
                 // PARA QUE GUARDAR ESTOS DATOS?
-                $_SESSION['ID_USER'] = $userBD -> id_user; 
-                $_SESSION['USERNAME'] = $userBD -> name; 
+                
+                $_SESSION['ID_USER'] = $emailBD ->id_user; 
+                $_SESSION['USERNAME'] = $emailBD ->name; 
                 //con el array $_SESSION accedo a los datos guardados en la sesion
-                header('Location: ', BASE_URL);
-                die();//Luego de una redirección se suele llamar a la función die() para forzar terminar la ejecución del script.
+                // header('Location: ', BASE_URL);
+                // die();//Luego de una redirección se suele llamar a la función die() para forzar terminar la ejecución del script.
+               
             }
+            else{
+                $incorrecto = "no entro";
+                // var_dump ($incorrecto);
+                // die();
+                echo "Login incorrecto";
+                // $this->view->showLogin("Login incorrecto");
+                die();
+            } 
         }
         else{
             $incorrecto = "no entro";
-            var_dump ($incorrecto);
+            // var_dump ($incorrecto);
+            // die();
+            echo "Login incorrecto";
+            // $this->view->showLogin("Login incorrecto");
             die();
-            $this->view->showLogin("Login incorrecto");
         } 
     }
+    public function logout() {
+        session_start();
+        session_destroy();
+        header('Location: ' . LOGIN);
+    }
+
+//REGISTRARSE - NO ES PARA PRIMER ENTREGA
     public function showSignIn(){
         $this-> view-> showSignIn();
     }
-    //REGISTRARSE
+//REGISTRARSE - NO ES PARA PRIMER ENTREGA
     public function signIn(){
         $userNameSignIn = $_POST['userName'];//tomo los valores de los inputs
         $userEmailSignIn = $_POST['userEmail'];
@@ -79,12 +94,5 @@ class LoginController{
             }
         }
     }
-    public function logout() {
-        session_start();
-        session_destroy();
-        header('Location: ' . LOGIN);
-    }
-
-
 
 }

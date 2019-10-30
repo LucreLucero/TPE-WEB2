@@ -1,6 +1,5 @@
 
-
-    <form action= "enterSession" method= "POST">
+    <form action= "verifyLog" method= "POST">
         <div class="form-group">
             <label>Email address</label>
             <input type="email" name="userEmail" placeholder="Enter email"/>

@@ -1,4 +1,5 @@
-    <h1>Sign In:</h1>
+    {* <h1>Sign In:</h1>
+    <p> este es el singin <p>
     <form action= "signInEnter" method= "POST">
         <div class="form-group">
             <label>User Name:</label>
@@ -13,4 +14,4 @@
             <input type="password" name= "password" placeholder="Password"/>
         </div>
         <button type="submit">Iniciar Sesión</button>
-    </form>
+    </form> *}

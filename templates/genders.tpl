@@ -3,5 +3,3 @@
         <li> {$gender -> name} </li>
     {/foreach}
 </ul>
-
-

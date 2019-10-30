@@ -16,12 +16,22 @@
         $genders = $query->fetchAll(PDO::FETCH_OBJ);
         return $genders;
     }
-     
-    public function insertGender($nameGender){//INSERTAR UN NUEVO GENERO
+//INSERTAR UN NUEVO GENERO
+    public function insertGender($nameGender){
+        // var_dump($nameGender);
         $query = $this->db->prepare("INSERT INTO genero(name) VALUE(?)");
         //preparo para inserta en la tabla de genero el nuevo genero
-        $querry->execute(array($nameGender));
+        $query->execute(array($nameGender));
         //ejecuto la accion
-        header("Location: " . BASE_URL);
+    }
+//BORRAR UN GENERO
+    public function deleteGender($genderID){ //obtener un genero
+        $query = $this->db->prepare("DELETE FROM genero WHERE name = ?");
+        //preparo para inserta en la tabla de genero el nuevo genero
+        $ok = $query->execute(array($genderID));
+        if(!$ok){
+            var_dump($query->errorInfo());
+            die();
+        }
     }
 }
