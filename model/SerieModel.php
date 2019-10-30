@@ -20,13 +20,25 @@ class SerieModel{
     public function getSerieDescription($serieNom){//obtener series LISTADO
         $query = $this-> db -> prepare("SELECT * FROM series WHERE name = ?");//selecciono de la tabla generos
         $ok = $query -> execute(array($serieNom));
-        
         if(!$ok){
            var_dump($query->errorInfo());
            die();
         }
         $serie = $query->fetch(PDO::FETCH_OBJ);
-
         return $serie;
+    }
+    
+    public function getSeriesOfGender($gender){//obtener series de UN genero
+        // var_dump($gender);
+        // die();
+        $query = $this-> db -> prepare("SELECT * FROM series WHERE id_gender = ?");
+        //no me permite la conversion del array traido desde getGenders en string
+        $ok = $query -> execute(array($gender));
+        if(!$ok){   
+           var_dump($query->errorInfo());
+           die();
+        }
+        $seriesOfGender = $query->fetchAll(PDO::FETCH_OBJ);
+        return $seriesOfGender;
     }
 }

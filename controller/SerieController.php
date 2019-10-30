@@ -19,4 +19,15 @@ class SerieController{
         // die();
         $this->serieView->showSerie($serie);
     }
+    public function getSeriesOfGender($gender){ 
+        // var_dump($gender);
+        // die(); 
+        $ID= $gender->id_gender;
+        $seriesOfGender =  $this ->serieModel ->getSeriesOfGender($ID);
+        var_dump($seriesOfGender);//tengo el problema que traigo un objeto entonces no le puedo hacer el get
+        die();
+
+        $this ->serieView ->ShowSeriesOfGender($seriesOfGender);
+
+    }
 }

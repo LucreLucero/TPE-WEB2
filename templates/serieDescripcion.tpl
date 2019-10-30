@@ -1,7 +1,7 @@
  
 
     {* <ul> *}
-    <h1>DESCRIPCGF FI FOHFCESLVKÑWLJREÑLVW</h1>
+    <h1>Series de Nefli</h1>
         {* {foreach from=$serie item=info} *}
        
            <li> {$serie->name} </li>          

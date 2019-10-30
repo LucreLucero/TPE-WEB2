@@ -21,4 +21,12 @@ class SerieView {
         
         //assign pasa valores para el template   
     }
+    public function ShowSeriesOfGender($seriesOfGender){
+        // $this -> smarty -> assign ('error', $error);//si falla entonces que muestre "error"
+        
+        // $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        $this -> smarty -> assign ('seriesOfGender', $seriesOfGender);
+        $this->smarty->display('templates/seriesOfGender.tpl');  
+        // var_dump("hola");      
+    }
 }

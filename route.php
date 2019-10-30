@@ -15,6 +15,7 @@ $controllerLogin = new LoginController();
 $serieController = new SerieController();
     if($action==''){//si action es nulo se muestra el index con la series
         $genderController -> showIndex();
+        // $genderController -> getGenders();
 
     }
     elseif(isset($action)){
@@ -42,7 +43,16 @@ $serieController = new SerieController();
             }
             if($url[0]=='serie'){
                 $serieController->showSerie($url[1]);
-            }    
+            }
+            if($url[0]=='genders'){
+                $serieController->showIndex();
+            }
+            if($url[0]=='genero'){
+                $gender = $genderController->getGender($url[1]);
+                // var_dump($gender);
+                // die();
+                $serieController->getSeriesOfGender($gender);
+            }  
 
     }
 
