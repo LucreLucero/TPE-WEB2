@@ -3,6 +3,7 @@
     <ul>
         {foreach from= $genders item= gender }
             <a href='{$BASE_URL}genero/{$gender ->name}'><li> {$gender ->name}  </li></a>
+            {* <a href='{$BASE_URL}delete/{$gender ->id_gender}'> Delete </a> *}
         {/foreach}
     </ul>
 </form>

@@ -30,10 +30,12 @@ class GenderController{
     }
     public function getGender($gender){
         $genderFor = $this->model->getGender($gender);
-        return $genderFor;
-        
+        return $genderFor;   
     }
-   
+    // public function deleteGender($genderID){
+    //     $deletedSuccesfully = $this->model->deleteGender($genderID);
+    //     $this ->view -> displayGenders($deletedSuccesfully);
+    // }
     public function addGender(){
         $this -> checkLoggedIn();
         if(isset($_POST['nameGender'])){
@@ -41,7 +43,14 @@ class GenderController{
             $this->model->insertGender($nameGender);
         }
     }
-    
+    public function checkLoggedIn(){
+        session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
+        if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
+            header('Location: '. LOGIN);
+            die();//Luego de una redirección se suele llamar a la función
+                      //die() para forzar terminar la ejecución del script.
+        }
+    }
 
 
 }

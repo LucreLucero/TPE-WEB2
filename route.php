@@ -33,7 +33,6 @@ $serieController = new SerieController();
             if($url[0] == 'enterSession'){
                 $controllerLogin -> verifyUser();
             }
-
             if($url[0] == 'logout'){
                 $controller = new LoginController();
                 $controller -> logout();
@@ -49,10 +48,11 @@ $serieController = new SerieController();
             }
             if($url[0]=='genero'){
                 $gender = $genderController->getGender($url[1]);
-                // var_dump($gender);
-                // die();
                 $serieController->getSeriesOfGender($gender);
-            }  
+            }
+            // if($url[0]=='deleteGender'){
+            //     $genderController->deleteGender($url[1]);
+            // }
 
     }
 

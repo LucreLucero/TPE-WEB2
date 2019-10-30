@@ -33,4 +33,12 @@
         //ejecuto la accion
         header("Location: " . BASE_URL);
     }
+    // public function deleteGender($genderID){//obtener UN genero
+    //     $query = $this-> db -> prepare("DELETE * FROM genero WHERE id_gender = ?");
+    //     $ok = $query -> execute(array($genderID));
+    //     if(!$ok){
+    //         var_dump($query->errorInfo());
+    //         die();
+    //     }
+    // }
 }
