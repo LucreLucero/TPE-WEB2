@@ -6,6 +6,27 @@
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_tpespecial;charset=utf8', 'root', '');
     }
 
+    public function getGender($gender){//obtener UN genero
+            $query = $this-> db -> prepare("SELECT * FROM genero WHERE name = ?");
+            $ok = $query -> execute(array($gender));
+            if(!$ok){
+                var_dump($query->errorInfo());
+                die();
+            }
+            $gender = $query->fetch(PDO::FETCH_OBJ);
+            return $gender;
+        }
+    public function getGenderByID($genderID){//obtener ID de UN genero
+        $query = $this-> db -> prepare("SELECT * FROM genero WHERE id_gender = ?");
+        $ok = $query -> execute(array($genderID));
+        if(!$ok){
+            var_dump($query->errorInfo());
+            die();
+        }
+        $genderName = $query->fetch(PDO::FETCH_OBJ);
+        return $genderName;
+    }
+
     public function getGenders(){//obtener generos
         $query = $this-> db -> prepare("SELECT * FROM genero");//selecciono de la tabla generos
         $ok = $query -> execute();
@@ -15,14 +36,24 @@
         }
         $genders = $query->fetchAll(PDO::FETCH_OBJ);
         return $genders;
-    }
+    }    
 //INSERTAR UN NUEVO GENERO
     public function insertGender($nameGender){
-        // var_dump($nameGender);
         $query = $this->db->prepare("INSERT INTO genero(name) VALUE(?)");
         //preparo para inserta en la tabla de genero el nuevo genero
         $query->execute(array($nameGender));
         //ejecuto la accion
+    }
+//EDITAR UN GENERO
+    public function editGender($nameGender, $recibido){
+        $query = $this->db->prepare("UPDATE genero SET name = ? WHERE name = ? ");
+        //preparo para inserta en la tabla de genero el nuevo genero
+        $ok = $query->execute(array($nameGender, $recibido));
+        //ejecuto la accion
+        if(!$ok){
+            var_dump($query->errorInfo());
+            die();
+        }
     }
 //BORRAR UN GENERO
     public function deleteGender($genderID){ //obtener un genero

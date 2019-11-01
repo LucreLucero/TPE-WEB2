@@ -1,66 +1,104 @@
 *{
     font-family:Helvetica,sans-serif;
+    /* font-size: 20px; */
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    box-sizing: border-box;
+    /* background-color: lightgreen; */
+}
+head{
+    height: 0%;
+}
+.log{
+     width: 20%;
+     height: 20%;
+     background-color: blue;
+     padding-left: 5%;
+     padding-right: 5%;
+     align-items: center;
+     justify-content: space-between ;
+     order: 2;
+}
+.entrar .salir{
+    font-size: 16px;
+    width: 20%;
+    height: 10%;
+}
+nav{
+    /* box-sizing: border-box; */
+    font-size: 10px;
+    order: 1;
+    align-items: center;
+    padding-left: 5%;
+    width: 80%;
+    height: 20%;
+    background-color: blueviolet;
+}
+
+.seriesDesription{
+    font-size: 16 px;
 }
 body{
     bottom: 0;
     width: 100%;
     text-align: left;      
-    background-color: beige;
-    margin-inline-start: 0%; 
-    font-family:'Raleway',sans-serif;
+    background-color: red;
+    /* margin-inline-start: 0%;  */
+    /* font-family:'Raleway',sans-serif; */
 }
-
-h1{
-    color:black;
-    text-transform: uppercase;
-    margin-left: 40px;
-    margin-top: 10px;
-}
-a {
-    text-decoration:none;
-}   
-h2{
-    color: black;
-    text-align: center;
-    margin: 0;
-    font-size: 30px;
-    font-family: 'Open Sans','HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif;
-    margin-bottom: 20px;
-}
-
-p{
-    margin-top: 10px; 
-    color: rgb(185, 158, 106);
-    margin: 30px 20px;  
-}
-
-footer{
-    background-color:rgb(93, 81, 42);
+.container{
     width: 100%;
-    height:200px;
-    display:inline-block;
-    clear: both;
-    text-align:center;
-}
+    order: 3;
+    font-size: 12px;
+    justify-content: center;
 
-table{
-    width: 400px;
-    background-color:rgb(241, 226, 226);
-    text-align: center;
-    border-collapse: collapse;
-    margin:40px;
 }
-th,td,tr{
-    border:0;
-    padding:10px;
-    border-bottom: solid 5px white;
+.login{
+    order: 4;
+    width: 100%;
+    height: 40%;
+    background-color: yellow;
+    align-items: center;
+    justify-content: center;
 }
-th{ 
-    font-family:sans-serif;
-    color:white;
-    background-color:rgb(93, 81, 42);    
+.email , .pass{
+    font-size: 16px;
+    height: 10%;
+    padding: 5px;
+    justify-content: space-between;                                  
 }
-tr:hover td{
-    background-color:rgba(110, 90, 25, 0.356);
-    color:white;
+/* .generos{
+    order:5;
+} */
+footer{
+    order: 10;
+    width: 100%;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+}
+.generos{
+    width: 100%;    
+    background-color: brown;
+    order: 6;
+}
+.listaGender , .listaSeries {
+    flex-direction: column; 
+    justify-content: space-evenly;
+    width: 100%;
+    /* padding: 5%; */   
+}
+.generoAdmin{
+    order: 7;
+}
+.series{
+    order: 8;
+}
+.seriesAdmin{
+    order: 9;
+}
+.addSerie{
+    
 }

@@ -6,9 +6,9 @@ class LoginView{
     
     public function __construct(){
         $this -> smarty = new Smarty();
+        // $this -> smarty -> display('templates/header.tpl');
     }
     public function showLogin($error = null){
-        // $this -> smarty -> display('templates/header.tpl');
         
         //creo una instancia de la clase smarty
         $this -> smarty -> assign('titulo','Iniciar Sesión');

@@ -43,7 +43,7 @@ class LoginController{
                 $_SESSION['ID_USER'] = $emailBD ->id_user; 
                 $_SESSION['USERNAME'] = $emailBD ->name; 
                 //con el array $_SESSION accedo a los datos guardados en la sesion
-                // header('Location: ', BASE_URL);
+                header('Location: '. BASE_URL . "enterSession");
                 // die();//Luego de una redirección se suele llamar a la función die() para forzar terminar la ejecución del script.
                
             }
