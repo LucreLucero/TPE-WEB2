@@ -1,4 +1,5 @@
 {include file="genders.tpl"}
+
 <div class= "generoAdmin">
     <form class="addGender" method="POST" action="enterSession/add">
         <label>Agrega un genero</label>
