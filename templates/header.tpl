@@ -44,7 +44,7 @@
               {* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> *}
               
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{$BASE_URL}login">Log In</a></button>
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{$BASE_URL}logout">Log Out</a></button>
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="LogOut"><a href="{$BASE_URL}logout">Log Out</a></button>
           </form>
         </div>
       </nav>  
