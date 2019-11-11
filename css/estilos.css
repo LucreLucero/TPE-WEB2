@@ -1,104 +1,34 @@
 *{
-    font-family:Helvetica,sans-serif;
-    /* font-size: 20px; */
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    box-sizing: border-box;
-    /* background-color: lightgreen; */
-}
-head{
-    height: 0%;
-}
-.log{
-     width: 20%;
-     height: 20%;
-     background-color: blue;
-     padding-left: 5%;
-     padding-right: 5%;
-     align-items: center;
-     justify-content: space-between ;
-     order: 2;
-}
-.entrar .salir{
-    font-size: 16px;
-    width: 20%;
-    height: 10%;
-}
-nav{
-    /* box-sizing: border-box; */
-    font-size: 10px;
-    order: 1;
-    align-items: center;
-    padding-left: 5%;
-    width: 80%;
-    height: 20%;
-    background-color: blueviolet;
-}
-
-.seriesDesription{
-    font-size: 16 px;
+    /* padding-top: 5%; */
+    /* margin-top: 0%; */
+    
 }
 body{
-    bottom: 0;
-    width: 100%;
-    text-align: left;      
-    background-color: red;
-    /* margin-inline-start: 0%;  */
-    /* font-family:'Raleway',sans-serif; */
-}
-.container{
-    width: 100%;
-    order: 3;
-    font-size: 12px;
-    justify-content: center;
+    background-color:#00EB8D;
 
 }
-.login{
-    order: 4;
-    width: 100%;
-    height: 40%;
-    background-color: yellow;
-    align-items: center;
-    justify-content: center;
+.container{
+    width: 70%;
+    padding-top: 0%;
+    margin-top: 1%;
+    border: 0px;
+    padding-left: 0%;
 }
-.email , .pass{
-    font-size: 16px;
-    height: 10%;
-    padding: 5px;
-    justify-content: space-between;                                  
+
+h6{
+    text-align: center;
 }
-/* .generos{
-    order:5;
-} */
-footer{
-    order: 10;
-    width: 100%;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
+
+.form-control{
+    width: 60%;
 }
-.generos{
-    width: 100%;    
-    background-color: brown;
-    order: 6;
+.formAdd{
+    padding-left: 24%;  
+    width: 65%;
+    /* height: 300px; */
+    /* align-items: center; */
 }
-.listaGender , .listaSeries {
-    flex-direction: column; 
-    justify-content: space-evenly;
-    width: 100%;
-    /* padding: 5%; */   
-}
-.generoAdmin{
-    order: 7;
-}
-.series{
-    order: 8;
-}
-.seriesAdmin{
-    order: 9;
-}
-.addSerie{
-    
+ul{
+    width: 80%;
 }

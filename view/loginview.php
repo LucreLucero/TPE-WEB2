@@ -30,4 +30,9 @@ class LoginView{
         //llamo a la funcion display en el template login
         $this -> smarty -> display('templates/footer.tpl');
     }
+    public function logInIncorrecto(){
+        $this -> smarty -> display('templates/ErrorAlert.tpl');
+        //llamo a la funcion display en el template login
+        $this -> smarty -> display('templates/footer.tpl');
+    }
 }

@@ -1,27 +1,66 @@
 {include file="genders.tpl"}
-<div class= "generoAdmin">
-    <form class="addGender" method="POST" action="enterSession/add">
-        <label>Agrega un genero</label>
-        <input type="text" name= "nameGenderAdd" placeholder="Gender"/>
-        <button type="submit">Agregar</button>
-    </form>
 
-    {*----- hacer-------- *}
-        <label>Editar un genero</label>
+                            {* AGREGAR *}    
+<form class="formAdd" method="POST" action="enterSession/add">
+    <label>Agregar Género:</label>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" name= "nameGenderAdd" placeholder="Gender" aria-label="Recipient's username" aria-describedby="button-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Agregar</button>
+        </div>
+    </div>
+</form>
+
+     {*----- hacer-------- *}
+
+            {* EDITAR NUEVO CON SELECT *}
+<form class="formAdd" method="POST" name= "nameGenderEdit" action="enterSession/edit">
+    <label>Editar un genero:</label>
+    <div class="input-group">
+    <select name="genderEdit" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+        {foreach from= $genders item= item }
+            <option value="{$item->name}">{$item->name}</option>   
+        {/foreach}
+    </select>
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Seleccioanar</button>
+    </div>
+    <input type="text" name= "nameGenderEdit" placeholder="Nuevo nombre"/>
+    <button value="Editar" type="submit" class="btn btn-outline-secondary">Enviar</button>
+    </div>
+</form>
+    
+    {* BORRAR  *}
+<form class="formAdd" method="POST" action="enterSession/deleteSerie">
+    <label>Borrar un genero:</label>
+    <div class="input-group">
+    <select name="gender" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+        {foreach from= $genders item= item }
+            <option value="{$item->name}">{$item->name}</option>   
+        {/foreach}
+    </select>
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">Seleccioanar</button>
+    </div>
+    <button value="Borrar" type="submit" class="btn btn-outline-secondary">Borrar</button>
+    </div>
+</form> 
+            
+        {*  EDITAR ORIGINAL *}
+{* <label>Editar un genero</label>
         <ul>
             {foreach from= $genders item= item }
                 <form class="editGender" method="POST" action="enterSession/edit/{$item->name} ">
                     <li>
                         {$item->name} 
                         <input type="text" name= "nameGenderEdit" placeholder="Gender"/>
-                        <input value="Editar" type="submit"/>
-                        
+                        <input value="Editar" type="submit"/>  
                             <button><a href="{$BASE_URL}enterSession/delete/{$item->name}">Borrar</a></button>
                     </li>
                 </form>
             {/foreach}
         </ul>
-</div>
+</div>  *}
     {* <button type="submit">Editar</button>
 
 <form class="deleteGender" method="POST" action="enterSession/delete">

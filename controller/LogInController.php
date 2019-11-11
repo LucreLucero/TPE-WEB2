@@ -49,19 +49,15 @@ class LoginController{
             }
             else{
                 $incorrecto = "no entro";
-                // var_dump ($incorrecto);
-                // die();
-                echo "Login incorrecto";
-                // $this->view->showLogin("Login incorrecto");
+                $this ->view ->logInIncorrecto();
+                // echo "Login incorrecto";
                 die();
             } 
         }
         else{
             $incorrecto = "no entro";
-            // var_dump ($incorrecto);
-            // die();
-            echo "Login incorrecto";
-            // $this->view->showLogin("Login incorrecto");
+            $this ->view ->logInIncorrecto();
+            // echo "Login incorrecto";
             die();
         } 
     }

@@ -4,6 +4,7 @@ require_once ('controller/LogInController.php');
 require_once ('controller/SerieController.php');
 
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+// define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]).'/');
 define("LOGIN", BASE_URL . 'login');
 define("SIGNIN", BASE_URL . 'signIn');
 define("URL_SERIE", BASE_URL . 'serie');
@@ -18,7 +19,6 @@ $serieController = new SerieController();
     if($action==''){//si action es nulo se muestra el index con la series
         $genderController -> showIndex();
         // $genderController -> getGenders();
-
     }
     elseif(isset($action)){
         //si el action está seteado
@@ -31,11 +31,11 @@ $serieController = new SerieController();
                 die();
             }
             if(isset($url[1]) && $url[1] == 'edit'){
-                $genderController -> editGender($url[2]);
+                $genderController -> editGender();
                 die();
             }
             if(isset($url[1]) && $url[1] == 'delete'){
-                $genderController -> deleteGender($url[2]);
+                $genderController -> deleteGender();
                 die();
             }
             if(isset($url[1]) && $url[1] == 'addSerie'){

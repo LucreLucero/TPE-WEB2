@@ -77,17 +77,21 @@ class GenderController{
         }
     }
 
-    public function editGender($recibido){
+    public function editGender(){//edit gender recibe el id del genero a editar mediante el string num 2 de la url
+        // var_dump("hola");
+        //         die();
         $this -> checkLoggedIn();
-        if(isset($_POST['nameGenderEdit'])){
+        if(isset($_POST['nameGenderEdit']) && isset($_POST['genderEdit'])){
             $nameGender = $_POST['nameGenderEdit'];
-            $this->model->editGender($nameGender, $recibido);
+            $genderEdit = $_POST['genderEdit'];
+            $this->model->editGender($nameGender, $genderEdit);
             header("Location: " . BASE_URL . "enterSession");
         }
     }
 
-    public function deleteGender($genderID){
+    public function deleteGender(){
         $this -> checkLoggedIn();
+        $genderID = $_post['gender'];
         // var_dump($genderID);
         // die();
         $this->model->deleteGender($genderID);

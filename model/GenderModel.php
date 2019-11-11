@@ -45,10 +45,10 @@
         //ejecuto la accion
     }
 //EDITAR UN GENERO
-    public function editGender($nameGender, $recibido){
+    public function editGender($nameGender, $genderEdit){
         $query = $this->db->prepare("UPDATE genero SET name = ? WHERE name = ? ");
         //preparo para inserta en la tabla de genero el nuevo genero
-        $ok = $query->execute(array($nameGender, $recibido));
+        $ok = $query->execute(array($nameGender, $genderEdit));
         //ejecuto la accion
         if(!$ok){
             var_dump($query->errorInfo());
