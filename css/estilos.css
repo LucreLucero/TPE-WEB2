@@ -5,7 +5,8 @@
     
 }
 body{
-    background-color:#00EB8D;
+    background-color:#A993BF;
+
 
 }
 .lista{
@@ -16,7 +17,7 @@ body{
     padding-top: 0%;
     margin-top: 1%;
     border: 0px;
-    padding-left: 0%;
+    padding-left: 0%;   
 }
 h6{
     text-align: center;
@@ -26,8 +27,8 @@ h6{
     background-color: whitesmoke;
 }
 /*  ESCONDER BOTON LOG OUT  */
-.esconderBoton{ 
-    visibility: hidden;
+#userName{
+    color: whitesmoke;
 }
 .form-control{
     width: 60%;

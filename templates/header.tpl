@@ -11,7 +11,7 @@
     </head>
 
     <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -43,8 +43,14 @@
           <form class="form-inline my-2 my-lg-0">
               {* <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> *}
               
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{$BASE_URL}login">Log In</a></button>
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="LogOut"><a href="{$BASE_URL}logout">Log Out</a></button>
+               
+              {if isset($smarty.session.ID_USER)}
+                <a class="nav-link" id="userName" disabled>{$smarty.session.USERNAME}</a>
+                <button class="btn btn-light" type="submit" id="LogOut"><a href="{$BASE_URL}logout">Log Out</a></button>
+              {else} 
+                <button class="btn btn-light" type="submit"><a href="{$BASE_URL}login">Log In</a></button>
+              {/if}
+              
           </form>
         </div>
       </nav>  

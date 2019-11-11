@@ -10,6 +10,7 @@ class GenderController{
     private $view;
 
     public function __construct(){
+        session_start();//llamo al sesion start
         $this->model = new GenderModel();
         $this->modelSerie = new SerieModel();
         //paso la function al constructor por que siempre se van a mostrar los generos
