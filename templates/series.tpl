@@ -5,6 +5,7 @@
     <h2>Series:</h2>
     <form action="serie" method="post">
         <ul>
+        <h2>Series:</h2>
             {foreach from=$series item=serie}
             <li class= listaSeries>
             <a href='{$BASE_URL}serie/{$serie->name}'><li> {$serie->name}  </li></a>  

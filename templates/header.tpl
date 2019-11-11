@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="{$BASE_URL}css/estilos.css">
         <title>Pagina de octi y lu</title>    
     </head>
+
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -47,3 +48,4 @@
           </form>
         </div>
       </nav>  
+      
