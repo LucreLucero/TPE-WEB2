@@ -28,10 +28,10 @@ class LoginController{
             $emailBD = $this-> model-> getByUserEmail($userEmail);
             //obtengo el email de la BBDD igual al ingresado por el usuario
             if((!empty($emailBD) && password_verify($password, $emailBD->pass))){
+                session_start();
              
                 //si usuario no esta vacio y la password ingresada es igual a la
                 //correspondiente del usuario en la tabla en la BBDD
-                // session_start();
                 //crea una sesion en el servidor, si ya existe trae la existente
                 //llamar siempre antes de acceder/almacenar un dato
                 // PARA QUE GUARDAR ESTOS DATOS?
@@ -56,6 +56,21 @@ class LoginController{
             // echo "Login incorrecto";
             die();
         } 
+    }
+    public function checkLoggedIn(){
+        // session_destroy();
+        // session_start()  ;//Crea una sesión en el servidor, si ya existe trae la existente.
+        
+        // var_dump($_SESSION);
+        // var_dump($_SESSION['ID_USER']); die();
+        if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
+            header('Location: '. LOGIN);
+            die();//Luego de una redirección se suele llamar a la función
+                    //die() para forzar terminar la ejecución del script.
+        }
+        else{
+            // var_dump("entro");die();
+        }
     }
     public function logout() {
         // session_start();

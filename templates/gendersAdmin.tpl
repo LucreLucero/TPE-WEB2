@@ -31,7 +31,7 @@
 </form>
     
     {* BORRAR  *}
-<form class="formAdd" method="POST" action="deleteSerie">
+<form class="formAdd" method="POST" action="delete">
     <label>Borrar un genero:</label>
     <div class="input-group">
     <select name="gender" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
@@ -44,7 +44,11 @@
     </div>
     <button value="Borrar" type="submit" class="btn btn-outline-secondary">Borrar</button>
     </div>
-</form> 
+</form>
+{if $existe} 
+    <p>El género ya existe</p>
+{/if}
+
             
         {*  EDITAR ORIGINAL *}
 {* <label>Editar un genero</label>

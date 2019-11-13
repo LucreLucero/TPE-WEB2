@@ -2,12 +2,15 @@
 require_once('./model/GenderModel.php');
 require_once('./model/SerieModel.php');
 require_once('./view/GenderView.php');
+require_once('./controller/LogInController.php');
+
 
 
 class GenderController{
     private $model;
     private $modelSerie;
     private $view;
+    private $LogInController;
     // private $seriesView;
 
     public function __construct(){
@@ -16,7 +19,9 @@ class GenderController{
         $this->modelSerie = new SerieModel();
         //paso la function al constructor por que siempre se van a mostrar los generos
         $this->view = new GenderView();
-        // $this->seriesView = new SeriesView();    
+        // $this->seriesView = new SeriesView();
+        $this->LogInController = new LoginController();
+
     }
     
     public function showIndex(){
@@ -25,11 +30,11 @@ class GenderController{
         
         $this ->view -> displayVisitante($genders, $series);
     }
-    public function showIndexAdmin(){
+    public function showIndexAdmin($existe = false){//por defecto $existe es false
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $series = $this ->modelSerie -> getSeries();
         
-        $this ->view -> displayAdmin($genders, $series);
+        $this ->view -> displayAdmin($genders, $series, $existe);
     }
     
     public function getGender($genderName){
@@ -54,33 +59,42 @@ class GenderController{
     // -------COSAS DE ADMINS QUE SE LOGUEAN----------
 
 // CHEQUEO DE LogIn  --->  REESCRIBIR
-    public function checkLoggedIn(){
-        // session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
-        if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
-            header('Location: '. LOGIN);
-            die();//Luego de una redirección se suele llamar a la función
-                    //die() para forzar terminar la ejecución del script.
-        }
-    }
+    // public function checkLoggedIn(){
+    //     // session_destroy();
+    //     // session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
+        
+    //     // var_dump($_SESSION);
+    //     // var_dump($_SESSION['ID_USER']); die();
+    //     if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
+    //         header('Location: '. LOGIN);
+    //         die();//Luego de una redirección se suele llamar a la función
+    //                 //die() para forzar terminar la ejecución del script.
+    //     }
+    //     else{
+    //         // var_dump("entro");die();
+    //     }
+    // }
 
     public function addGender(){
-        // var_dump("hola"); die();
-        $this -> checkLoggedIn();//chequep que esté logueado
+        
+        $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
         //FALTA CHEQUEAR QUE SEA ADMIN
         $nameGender = $_POST['nameGenderAdd'];//guardo el nameGender en variable
         if(isset($_POST['nameGenderAdd'])){//si está seteado
             // busco en la BBDD un gender con el mismo name guardado en $nameGender
             $genderNameBBDD = $this->model->getGender($nameGender);
-            // echo $genderNameBBDD->name;
             // echo $nameGender; die;
-            if($genderNameBBDD->name != $nameGender){
-                var_dump("lala");die;
+            // var_dump($genderNameBBDD == null); die;
+            if($genderNameBBDD == null){
+                // var_dump("lala");die;
+                // var_dump ($genderNameBBDD); die();
                 $this->model->insertGender($nameGender);
                 header("Location: " . BASE_URL. "enterSession");
             }
             else{
-                var_dump("ya existe");die;//hacer el fetch de la api para corroborar esto
-                header("Location: " . BASE_URL. "enterSession");
+                $this -> showIndexAdmin(true);
+                // var_dump("ya existe");die;//hacer el fetch de la api para corroborar esto
+                // header("Location: " . BASE_URL. "enterSession");
             }
         }
     }
@@ -88,7 +102,7 @@ class GenderController{
     public function editGender(){//edit gender recibe el id del genero a editar mediante el string num 2 de la url
         // var_dump("hola");
         //         die();
-        $this -> checkLoggedIn();
+        $this ->LogInController-> checkLoggedIn();
         if(isset($_POST['nameGenderEdit']) && isset($_POST['genderEdit'])){
             $nameGender = $_POST['nameGenderEdit'];
             $genderEdit = $_POST['genderEdit'];
@@ -98,10 +112,10 @@ class GenderController{
     }
 
     public function deleteGender(){
-        $this -> checkLoggedIn();
-        $genderID = $_post['gender'];
-        // var_dump($genderID);
+        $this ->LogInController ->checkLoggedIn();
+        // var_dump("HOL");
         // die();
+        $genderID = $_POST['gender'];
         $this->model->deleteGender($genderID);
         header("Location: " . BASE_URL . "enterSession");
     }
