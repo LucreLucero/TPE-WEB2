@@ -6,7 +6,8 @@ class LoginView{
     
     public function __construct(){
         $this -> smarty = new Smarty();
-        // $this -> smarty -> display('templates/header.tpl');
+        $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        $this -> smarty -> display('templates/header.tpl');
     }
     public function showLogin($error = null){
         

@@ -8,6 +8,7 @@ class GenderController{
     private $model;
     private $modelSerie;
     private $view;
+    // private $seriesView;
 
     public function __construct(){
         session_start();//llamo al sesion start
@@ -15,18 +16,22 @@ class GenderController{
         $this->modelSerie = new SerieModel();
         //paso la function al constructor por que siempre se van a mostrar los generos
         $this->view = new GenderView();
-        
+        // $this->seriesView = new SeriesView();    
     }
     
     public function showIndex(){
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $series = $this ->modelSerie -> getSeries();
-
+        
         $this ->view -> displayVisitante($genders, $series);
-        // $this->view->displayGenders($genders);
-        // $this ->view -> displaySeries($series);
     }
+    public function showIndexAdmin(){
+        $genders = $this->model->getGenders();//obtengo los generos desde el model
+        $series = $this ->modelSerie -> getSeries();
 
+        $this ->view -> displayAdmin($genders, $series);
+    }
+    
     public function getGender($genderName){
         $gender = $this->model->getGender($genderName);  
         return  $gender; 
@@ -56,17 +61,6 @@ class GenderController{
             die();//Luego de una redirección se suele llamar a la función
                     //die() para forzar terminar la ejecución del script.
         }
-    }
-    public function showIndexAdmin(){
-        $genders = $this->model->getGenders();//obtengo los generos desde el model
-        // $this->view->displayGenders($genders);
-        // var_dump($genders);
-        // die();
-
-        $series = $this ->modelSerie -> getSeries();
-        // var_dump($series);
-        // die();
-        $this ->view -> displayAdmin($genders, $series);
     }
 
     public function addGender(){

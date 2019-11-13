@@ -30,21 +30,22 @@ class LoginController{
             if((!empty($emailBD) && password_verify($password, $emailBD->pass))){
                 // var_dump($emailBD);
                 // die();
-                            
+                
                 //si usuario no esta vacio y la password ingresada es igual a la
                 //correspondiente del usuario en la tabla en la BBDD
                 // var_dump($emailBD);
                 // die();
                 session_start();
-                 //crea una sesion en el servidor, si ya existe trae la existente
+                //crea una sesion en el servidor, si ya existe trae la existente
                 //llamar siempre antes de acceder/almacenar un dato
                 // PARA QUE GUARDAR ESTOS DATOS?
                 
                 $_SESSION['ID_USER'] = $emailBD ->id_user; 
                 $_SESSION['USERNAME'] = $emailBD ->name; 
+                // echo "algo"; die;
                 //con el array $_SESSION accedo a los datos guardados en la sesion
                 header('Location: '. BASE_URL . "enterSession");
-                // die();//Luego de una redirección se suele llamar a la función die() para forzar terminar la ejecución del script.
+                die();//Luego de una redirección se suele llamar a la función die() para forzar terminar la ejecución del script.
                
             }
             else{

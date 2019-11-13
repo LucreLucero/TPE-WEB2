@@ -9,6 +9,12 @@ class SerieView {
         $this->smarty = new Smarty();
     }
     
+    // public function displaySeriesAdmin($series){       
+    //     $this -> smarty -> assign ('series', $series);
+    //     $this -> smarty -> display ('templates/seriesAdmin.tpl');
+    //     $this -> smarty -> display ('templates/footer.tpl');
+    // }
+
     public function showSerie($infoSerie, $genderName){
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('genderName', $genderName);
