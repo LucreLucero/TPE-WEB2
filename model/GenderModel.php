@@ -42,6 +42,7 @@
         $query = $this->db->prepare("INSERT INTO genero(name) VALUE(?)");
         //preparo para inserta en la tabla de genero el nuevo genero
         $query->execute(array($nameGender));
+        var_dump($nameGender); die();
         //ejecuto la accion
     }
 //EDITAR UN GENERO

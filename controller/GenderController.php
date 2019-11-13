@@ -28,7 +28,7 @@ class GenderController{
     public function showIndexAdmin(){
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $series = $this ->modelSerie -> getSeries();
-
+        
         $this ->view -> displayAdmin($genders, $series);
     }
     
@@ -53,9 +53,9 @@ class GenderController{
 
     // -------COSAS DE ADMINS QUE SE LOGUEAN----------
 
-// CHEQUEO DE LogIn
+// CHEQUEO DE LogIn  --->  REESCRIBIR
     public function checkLoggedIn(){
-        session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
+        // session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
         if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
             header('Location: '. LOGIN);
             die();//Luego de una redirección se suele llamar a la función
@@ -64,11 +64,24 @@ class GenderController{
     }
 
     public function addGender(){
-        $this -> checkLoggedIn();
-        if(isset($_POST['nameGenderAdd'])){
-            $nameGender = $_POST['nameGenderAdd'];
-            $this->model->insertGender($nameGender);
-            header("Location: " . BASE_URL. "enterSession");
+        // var_dump("hola"); die();
+        $this -> checkLoggedIn();//chequep que esté logueado
+        //FALTA CHEQUEAR QUE SEA ADMIN
+        $nameGender = $_POST['nameGenderAdd'];//guardo el nameGender en variable
+        if(isset($_POST['nameGenderAdd'])){//si está seteado
+            // busco en la BBDD un gender con el mismo name guardado en $nameGender
+            $genderNameBBDD = $this->model->getGender($nameGender);
+            // echo $genderNameBBDD->name;
+            // echo $nameGender; die;
+            if($genderNameBBDD->name != $nameGender){
+                var_dump("lala");die;
+                $this->model->insertGender($nameGender);
+                header("Location: " . BASE_URL. "enterSession");
+            }
+            else{
+                var_dump("ya existe");die;//hacer el fetch de la api para corroborar esto
+                header("Location: " . BASE_URL. "enterSession");
+            }
         }
     }
 

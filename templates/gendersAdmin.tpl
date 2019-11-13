@@ -1,7 +1,7 @@
 {include file="genders.tpl"}
 
                             {* AGREGAR *}    
-<form class="formAdd" method="POST" action="enterSession/add">
+<form class="formAdd" method="POST" action="add">
     <label>Agregar Género:</label>
     <div class="input-group mb-3">
         <input type="text" class="form-control" name= "nameGenderAdd" placeholder="Gender" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -14,7 +14,7 @@
      {*----- hacer-------- *}
 
             {* EDITAR NUEVO CON SELECT *}
-<form class="formAdd" method="POST" name= "nameGenderEdit" action="enterSession/edit">
+<form class="formAdd" method="POST" name= "nameGenderEdit" action="edit">
     <label>Editar un genero:</label>
     <div class="input-group">
     <select name="genderEdit" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
@@ -31,7 +31,7 @@
 </form>
     
     {* BORRAR  *}
-<form class="formAdd" method="POST" action="enterSession/deleteSerie">
+<form class="formAdd" method="POST" action="deleteSerie">
     <label>Borrar un genero:</label>
     <div class="input-group">
     <select name="gender" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">

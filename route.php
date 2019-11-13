@@ -14,8 +14,9 @@ $r = new Router();// Router se encarga de
 
 //rutas
 $r->addRoute("login", "GET", "LoginController", "showLogin");//anda
-$r->addRoute("enterSession", "POST", "GenderController", "showIndexAdmin");//cambiar enterSession por Home
+$r->addRoute("logout", "GET", "LoginController", "logout");//anda
 $r->addRoute("verifyLog", "POST", "LoginController", "verifyUser");//se activa al loguearse ANDA
+$r->addRoute("enterSession", "GET", "GenderController", "showIndexAdmin");//cambiar enterSession por Home
 $r->addRoute("add", "POST", "GenderController", "addGender");
 // $r->addRoute("edit", "POST", "GenderController", "editGender");
 // $r->addRoute("delete", "POST", "GenderController", "deleteGender");

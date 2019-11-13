@@ -28,21 +28,16 @@ class LoginController{
             $emailBD = $this-> model-> getByUserEmail($userEmail);
             //obtengo el email de la BBDD igual al ingresado por el usuario
             if((!empty($emailBD) && password_verify($password, $emailBD->pass))){
-                // var_dump($emailBD);
-                // die();
-                
+             
                 //si usuario no esta vacio y la password ingresada es igual a la
                 //correspondiente del usuario en la tabla en la BBDD
-                // var_dump($emailBD);
-                // die();
-                session_start();
+                // session_start();
                 //crea una sesion en el servidor, si ya existe trae la existente
                 //llamar siempre antes de acceder/almacenar un dato
                 // PARA QUE GUARDAR ESTOS DATOS?
                 
                 $_SESSION['ID_USER'] = $emailBD ->id_user; 
-                $_SESSION['USERNAME'] = $emailBD ->name; 
-                // echo "algo"; die;
+                $_SESSION['USERNAME'] = $emailBD ->name;
                 //con el array $_SESSION accedo a los datos guardados en la sesion
                 header('Location: '. BASE_URL . "enterSession");
                 die();//Luego de una redirección se suele llamar a la función die() para forzar terminar la ejecución del script.
@@ -63,7 +58,7 @@ class LoginController{
         } 
     }
     public function logout() {
-        session_start();
+        // session_start();
         session_destroy();
         header('Location: ' . LOGIN);
     }
@@ -85,7 +80,7 @@ class LoginController{
             if($userEmailSignIn != $emailBBDD){
                 $hash = password_hash($passwordSignIn, PASSWORD_DEFAULT);//hash a la password
                 $this -> model -> signIn($userNameSignIn, $userEmailSignIn, $hash);//lo envio al model
-                session_start();
+                // session_start();
                 header('Location: ' . BASE_URL);//redirecciono al home
                 //acá redirecciono a el home con accesso a las series
             }
