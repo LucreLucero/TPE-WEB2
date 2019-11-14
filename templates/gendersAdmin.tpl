@@ -45,7 +45,7 @@
     <button value="Borrar" type="submit" class="btn btn-outline-secondary">Borrar</button>
     </div>
 </form>
-{if $existe} 
+{if $existeGender} 
     <p>El género ya existe</p>
 {/if}
 

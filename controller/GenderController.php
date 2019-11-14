@@ -30,11 +30,13 @@ class GenderController{
         
         $this ->view -> displayVisitante($genders, $series);
     }
-    public function showIndexAdmin($existe = false){//por defecto $existe es false
+    public function showIndexAdmin($existeGender = false, $existeSerie = false){//por defecto $existe es false
+        $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
+        
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $series = $this ->modelSerie -> getSeries();
         
-        $this ->view -> displayAdmin($genders, $series, $existe);
+        $this ->view -> displayAdmin($genders, $series, $existeGender, $existeSerie);
     }
     
     public function getGender($genderName){
@@ -92,7 +94,7 @@ class GenderController{
                 header("Location: " . BASE_URL. "enterSession");
             }
             else{
-                $this -> showIndexAdmin(true);
+                $this -> showIndexAdmin($existeGender = true);
                 // var_dump("ya existe");die;//hacer el fetch de la api para corroborar esto
                 // header("Location: " . BASE_URL. "enterSession");
             }

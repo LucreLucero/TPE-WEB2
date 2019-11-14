@@ -1,16 +1,24 @@
 <?php
 require_once('./model/SerieModel.php');
 require_once('./view/SerieView.php');
+require_once('./controller/GenderController.php');
+require_once('./controller/LogInController.php');
+
 
 class SerieController{
     private $serieModel;
     private $serieView;
+    private $GenderController;
+    private $LogInController;
+
 
     public function __construct(){
+        session_start();
         $this->serieModel = new SerieModel();
-        // var_dump($serieModel);
-        // die();
+        $this->GenderController = new GenderController();        
         $this->serieView = new SerieView();
+        $this->LogInController = new LoginController();
+
     }
 
     public function getSerie($serieNombre){
@@ -24,50 +32,38 @@ class SerieController{
         // $ID = $serie->id_gender;
         $this->serieView->showSerie($infoSerie, $genderName);
     }
-    // // CHEQUEO DE LogIn
-    public function checkLoggedIn(){
-        // var_dump("hey!");
-        //     die();
-        session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
-        if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
-            // var_dump("hey!");
-            // die();//Luego de una redirección se suele llamar a la función
-
-            header('Location: '. LOGIN);
-            die();//Luego de una redirección se suele llamar a la función
-                    //die() para forzar terminar la ejecución del script.
-        }
-    }
     
     public function getSeriesOfGender($gender){ 
         $ID= $gender->id_gender;
-        // var_dump($ID);
-        // die(); 
         $seriesOfGender =  $this ->serieModel ->getSeriesOfGender($ID);
-        // var_dump($seriesOfGender);//tengo el problema que traigo un objeto entonces no le puedo hacer el get
-        // die();
-
         $this ->serieView ->ShowSeriesOfGender($seriesOfGender);
-
     }
+
     public function addSerie(){
-        // var_dump("hey!");
-        //     die();
-        // $this -> checkLoggedIn();
+        $this ->LogInController ->checkLoggedIn();
         if(($_POST['nameSerieAdd'])!='' && ($_POST['descriptionSerieAdd']) !='' 
         && ($_POST['scoreSerieAdd']) !='' && ($_POST['gender'])){
+            
             $nameSerie = $_POST['nameSerieAdd'];
             $descriptionSerie = $_POST['descriptionSerieAdd'];
             $scoreSerie = $_POST['scoreSerieAdd'];
             $gender = $_POST['gender'];
-            $this ->serieModel -> insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender);
-            
+            $SerieNameBBDD = $this ->getSerie($nameSerie);
+            // var_dump($SerieNameBBDD);    die();
+            if($SerieNameBBDD == null){
+                $this ->serieModel -> insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender);
+                header("Location: " . BASE_URL. "enterSession");
+            }
+            else{
+                var_dump("ya existe");die;
+                $this ->GenderController ->showIndexAdmin($existeSerie = true);
+
+            }
         }
-        header("Location: " . BASE_URL. "enterSession");
         
     }
     public function editSerie(){
-        $this -> checkLoggedIn();
+        $this ->LogInController ->checkLoggedIn();
         if(($_POST['nameSerieEdit'])!='' && ($_POST['descriptionSerieEdit']) !='' 
         && ($_POST['scoreSerieEdit']) !='' && ($_POST['genderEdit'])!='' && ($_POST['serieEdit'])!=''){
             $nameSerie = $_POST['nameSerieEdit'];
@@ -80,7 +76,7 @@ class SerieController{
         }
     }
     public function deleteSerie(){
-        $this -> checkLoggedIn();
+        $this ->LogInController ->checkLoggedIn();
         if(($_POST['serieDelete'])!=''){
             // var_dump($serieName);
             // die();

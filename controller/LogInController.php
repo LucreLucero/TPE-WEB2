@@ -59,7 +59,7 @@ class LoginController{
     }
     public function checkLoggedIn(){
         // session_destroy();
-        // session_start()  ;//Crea una sesión en el servidor, si ya existe trae la existente.
+        // session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
         
         // var_dump($_SESSION);
         // var_dump($_SESSION['ID_USER']); die();
@@ -73,9 +73,14 @@ class LoginController{
         }
     }
     public function logout() {
-        // session_start();
+        session_start();
+
+        // foreach ($_SESSION as $key =>$value){
+        //     $_SESSION[$key]= NULL;
+        // }
+
         session_destroy();
-        header('Location: ' . LOGIN);
+        header('Location: ' . BASE_URL);
     }
 
 //REGISTRARSE - NO ES PARA PRIMER ENTREGA

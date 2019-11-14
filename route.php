@@ -7,6 +7,7 @@ require_once ('Router.php');
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 // define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].dirname($_SERVER["PHP_SELF"]).'/');
 define("LOGIN", BASE_URL . 'login');
+define("LOGOUT", BASE_URL . 'logout');  
 define("SIGNIN", BASE_URL . 'signIn');
 define("URL_SERIE", BASE_URL . 'serie');
 
@@ -20,9 +21,9 @@ $r->addRoute("enterSession", "GET", "GenderController", "showIndexAdmin");//camb
 $r->addRoute("add", "POST", "GenderController", "addGender");
 $r->addRoute("edit", "POST", "GenderController", "editGender");
 $r->addRoute("delete", "POST", "GenderController", "deleteGender");
-// $r->addRoute("addSerie", "POST", "SerieController", "addSerie");
-// $r->addRoute("editSerie", "POST", "SerieController", "editSerie");
-// $r->addRoute("deleteSerie", "POST", "SerieController", "deleteSerie");
+$r->addRoute("addSerie", "POST", "SerieController", "addSerie");
+$r->addRoute("editSerie", "POST", "SerieController", "editSerie");
+$r->addRoute("deleteSerie", "POST", "SerieController", "deleteSerie");
 
 
 
