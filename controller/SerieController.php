@@ -20,22 +20,39 @@ class SerieController{
         $this->LogInController = new LoginController();
 
     }
+// ----------------------------------------------------------
+    public function showDescripcionSeries($params=null){
+        $idserieQueQuiero = $params[':ID'];
+        $serie = $this->getSerieEspecifica($idserieQueQuiero);
+        $genero = $this->GenderController->getGenderByID($serie);
+        // var_dump($genero); die();
 
-    public function getSerie($serieNombre){
-        $serie = $this->serieModel->getSerieDescription($serieNombre);
-        // $ID = $serie->id_gender;
-        // $this->serieView->showSerie($serie,);
+        $this->serieView->showSerie($serie, $genero);
+    }
+    public function getSerieEspecifica($idserieQueQuiero){
+        $serie = $this->serieModel->getSerieDescription($idserieQueQuiero);
         return $serie;
     }
-    public function showSerie($infoSerie, $genderName){
-        // $serie = $this->serieModel->getSerieDescription($serieNombre);
-        // $ID = $serie->id_gender;
-        $this->serieView->showSerie($infoSerie, $genderName);
-    }
+// ----------------------------------------------------------
+
+    // public function getSerie($serieNombre){
+    //     $serie = $this->serieModel->getSerieDescription($serieNombre);
+    //     // $ID = $serie->id_gender;
+    //     // $this->serieView->showSerie($serie,);
+    //     return $serie;
+    // }
+    // public function showSerie($infoSerie, $genderName){
+    //     // $serie = $this->serieModel->getSerieDescription($serieNombre);
+    //     // $ID = $serie->id_gender;
+    //     $this->serieView->showSerie($infoSerie, $genderName);
+    // }
     
-    public function getSeriesOfGender($gender){ 
-        $ID= $gender->id_gender;
+    public function showSeriesOfGender($params=null){ 
+        $ID = $params[':ID'];
+        // var_dump($ID); die();
         $seriesOfGender =  $this ->serieModel ->getSeriesOfGender($ID);
+        
+
         $this ->serieView ->ShowSeriesOfGender($seriesOfGender);
     }
 

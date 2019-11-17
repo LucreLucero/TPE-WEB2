@@ -18,12 +18,15 @@ $r->addRoute("login", "GET", "LoginController", "showLogin");//anda
 $r->addRoute("logout", "GET", "LoginController", "logout");//anda
 $r->addRoute("verifyLog", "POST", "LoginController", "verifyUser");//se activa al loguearse ANDA
 $r->addRoute("enterSession", "GET", "GenderController", "showIndexAdmin");//cambiar enterSession por Home
-$r->addRoute("add", "POST", "GenderController", "addGender");
-$r->addRoute("edit", "POST", "GenderController", "editGender");
-$r->addRoute("delete", "POST", "GenderController", "deleteGender");
-$r->addRoute("addSerie", "POST", "SerieController", "addSerie");
-$r->addRoute("editSerie", "POST", "SerieController", "editSerie");
-$r->addRoute("deleteSerie", "POST", "SerieController", "deleteSerie");
+$r->addRoute("add", "POST", "GenderController", "addGender");//anda
+$r->addRoute("edit", "POST", "GenderController", "editGender");//anda
+$r->addRoute("delete", "POST", "GenderController", "deleteGender");//anda
+$r->addRoute("addSerie", "POST", "SerieController", "addSerie");//anda
+$r->addRoute("editSerie", "POST", "SerieController", "editSerie");//anda
+$r->addRoute("deleteSerie", "POST", "SerieController", "deleteSerie");//anda
+$r->addRoute("serie/:ID", "GET", "SerieController", "showDescripcionSeries");//anda
+
+$r->addRoute("genero/:ID", "GET", "SerieController", "showSeriesOfGender");
 
 
 

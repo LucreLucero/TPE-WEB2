@@ -16,6 +16,7 @@ class SerieView {
     // }
 
     public function showSerie($infoSerie, $genderName){
+    // public function showSerie($serie, $genero){
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('genderName', $genderName);
         $this -> smarty -> assign ('serie', $infoSerie);
@@ -26,13 +27,12 @@ class SerieView {
         //assign pasa valores para el template   
     }
     public function ShowSeriesOfGender($seriesOfGender){
+        // var_dump($seriesOfGender); die();      
         // $this -> smarty -> assign ('error', $error);//si falla entonces que muestre "error"
         
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        // var_dump($seriesOfGender);
-        // die();      
 
-        $this -> smarty -> assign ('seriesOfGender', $seriesOfGender);
+        $this -> smarty -> assign ('series', $seriesOfGender);
         $this->smarty->display('templates/seriesOfGender.tpl');  
     }
 }

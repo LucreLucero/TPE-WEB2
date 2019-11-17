@@ -17,9 +17,9 @@ class SerieModel{
         return $series; 
     }
      
-    public function getSerieDescription($serieNom){//obtener descripcion de serie
+    public function getSerieDescription($serie_id){//obtener descripcion de serie
         $query = $this-> db -> prepare("SELECT * FROM series WHERE name = ?");//selecciono de la tabla generos
-        $ok = $query -> execute(array($serieNom));
+        $ok = $query -> execute(array($serie_id));
         if(!$ok){
            var_dump($query->errorInfo());
            die();
@@ -29,16 +29,15 @@ class SerieModel{
     }
     
     public function getSeriesOfGender($ID){//obtener series de UN genero
-        // var_dump($ID);
-        // die();
         $query = $this-> db -> prepare("SELECT * FROM series WHERE id_gender = ?");
         //no me permite la conversion del array traido desde getGenders en string
         $ok = $query -> execute(array($ID));
         if(!$ok){   
-           var_dump($query->errorInfo());
-           die();
+            var_dump($query->errorInfo());
+            die();
         }
         $seriesOfGender = $query->fetchAll(PDO::FETCH_OBJ);
+        // var_dump($seriesOfGender);die();
         return $seriesOfGender;
     }
     public function insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender){

@@ -8,14 +8,22 @@
 
             {/foreach}
         </ul> *}
-
+echo ("por favor entra");
 <div class="list-group">
     <ul>
-        {foreach from=$seriesOfGender item=serie}   
+    {* <li>{$series ->name}</li> *}
+    <p class="list-group-item active">Series</p>
+
+        echo ("aparezcan malditas series!");
+                {foreach from=$series item=serie}
+                    <li>
+                        <a href="{$BASE_URL}serie/{$serie->name}" class="list-group-item">{$serie->name}</a>
+                    </li>
+                {/foreach}
+        {* {foreach from=$series item=serie}   
             <li>
                 <a href="{$BASE_URL}serie/{$serie->name}" class="list-group-item list-group-item-action active">{$serie->name}</a>
             </li>  
-        {/foreach}
+        {/foreach} *}
     </ul>
 </div>
-
