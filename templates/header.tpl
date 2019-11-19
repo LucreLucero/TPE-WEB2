@@ -46,9 +46,10 @@
                {* si esta ID_USER está seteado el boton LogOut se habilita, sino sólo está logIn *}
               {if isset($smarty.session.ID_USER)}
                 <a class="nav-link" id="userName" disabled>{$smarty.session.USERNAME}</a>
-                <button class="btn btn-light" type="submit" id="LogOut"><a href="{$BASE_URL}logout">Log Out</a></button>
+                <a href="{$BASE_URL}logout"><div class="btn btn-light" id="LogOut">Log Out</div></a>
               {else} 
-                <button class="btn btn-light" type="submit"><a href="{$BASE_URL}login">Log In</a></button>
+                <a href="{$BASE_URL}login"><div class="btn btn-light">Log In</div></a>
+                <a href="{$BASE_URL}signIn"><div class="btn btn-light">Sign In</div></a>
               {/if}
               
           </form>

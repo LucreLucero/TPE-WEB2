@@ -15,11 +15,13 @@ class SerieView {
     //     $this -> smarty -> display ('templates/footer.tpl');
     // }
 
-    public function showSerie($infoSerie, $genderName){
+    public function showSerie($infoSerie, $genderName ){
     // public function showSerie($serie, $genero){
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('genderName', $genderName);
         $this -> smarty -> assign ('serie', $infoSerie);
+
+        // $this -> smarty -> assign ('comments', $comments);        
         
         $this -> smarty -> display ('templates/serieDescripcion.tpl');
         $this -> smarty -> display ('templates/footer.tpl');
@@ -35,4 +37,14 @@ class SerieView {
         $this -> smarty -> assign ('series', $seriesOfGender);
         $this->smarty->display('templates/seriesOfGender.tpl');  
     }
+    // public function displaySeries($genders, $series, $existeSerie){
+    //     // $this -> smarty -> assign ('existeGender', $existeGender);
+    //     $this -> smarty -> assign ('existeSerie', $existeSerie);
+    //     $this -> smarty -> assign ('genders', $genders);
+    //     $this -> smarty -> assign ('series', $series);
+    //     // $this -> smarty -> display ('templates/gendersAdmin.tpl');    
+    //     $this -> smarty -> display ('templates/seriesAdmin.tpl');
+    //     $this -> smarty -> display ('templates/footer.tpl');
+    // }
+
 }

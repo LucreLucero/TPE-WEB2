@@ -23,7 +23,7 @@
             <p class="list-group-item list-group-item-action active">Géneros</p>
             {foreach from= $genders item= gender }
                 <li>
-                    <a href="{$BASE_URL}genero/{$gender ->name}" class="list-group-item list-group-item-action"> {$gender ->name} </a>
+                    <a href="{$BASE_URL}genero/{$gender->id_gender}" class="list-group-item list-group-item-action"> {$gender ->name} </a>
                 </li>
             {/foreach}
 

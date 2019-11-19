@@ -31,9 +31,7 @@
                 <option>4</option>
                 <option>5</option>
                 <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
+                <option>7</option>        
                 <option>10</option>
             </select>
             <select name="gender">
@@ -63,7 +61,7 @@
             <input type="text" name = "descriptionSerieEdit" placeholder="Descripcion"/>
             {* <input type="number" name = "scoreSerieEdit" placeholder="Puntaje"/> *}
         {*----- PROBAR HACER EL SELECT ENTRE 1 Y 10 CON JS----------- *}
-            <select type="number" name= "scoreSerieAdd" placeholder="Puntaje" class="form-control" id="exampleFormControlSelect1">
+            <select type="number" name= "scoreSerieEdit" placeholder="Puntaje" class="form-control" id="exampleFormControlSelect1">
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>

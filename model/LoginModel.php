@@ -14,9 +14,9 @@ class LoginModel{
         return $emailBD;
         }
 //PERTENECE A REGISTRARSE - NO ES PARA PRIMER ENTREGA    
-    public function signIn($userNameSignIn, $userEmailSigIn, $hash){
+    public function signIn($userEmailSignIn, $hash, $userNameSignIn){
         //hago envio de name, email y password a la BBDD
-        $query = $this -> db -> prepare('INSERT INTO checkuser(email, pass) VALUES(?,?)');
-        $query ->execute(array($userNameSignIn, $userEmailSigIn, $hash));
+        $query = $this -> db -> prepare('INSERT INTO checkuser(email, pass, name) VALUES(?,?,?)');
+        $query ->execute(array($userEmailSignIn, $hash, $userNameSignIn));
     }
 }

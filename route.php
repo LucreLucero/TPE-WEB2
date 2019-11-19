@@ -2,6 +2,7 @@
 require_once ('controller/GenderController.php');
 require_once ('controller/LogInController.php');
 require_once ('controller/SerieController.php');
+require_once ('controller/UserController.php');
 require_once ('Router.php');
 
 define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -14,17 +15,25 @@ define("URL_SERIE", BASE_URL . 'serie');
 $r = new Router();// Router se encarga de 
 
 //rutas
-$r->addRoute("login", "GET", "LoginController", "showLogin");//anda
-$r->addRoute("logout", "GET", "LoginController", "logout");//anda
+$r->addRoute("login", "GET", "LoginController", "showLogin");//anda MUESTRA EL LOGIN
+$r->addRoute("signIn", "GET", "LoginController", "showSignIn");//anda
+$r->addRoute("signInEnter", "POST", "LoginController", "signIn");//anda REGISTRARSE Y ENTRAR
+$r->addRoute("logout", "GET", "LoginController", "logout");//anda DESLOGUEARSE
 $r->addRoute("verifyLog", "POST", "LoginController", "verifyUser");//se activa al loguearse ANDA
-$r->addRoute("enterSession", "GET", "GenderController", "showIndexAdmin");//cambiar enterSession por Home
+$r->addRoute("homeAdmin", "GET", "GenderController", "showIndexAdmin");//HOME DE ADMINN
+$r->addRoute("genders", "GET", "GenderController", "showGenders"); //anda GENDERS ADMIN
+$r->addRoute("series", "GET", "GenderController", "showSeries"); //anda SERIES ADMIN
+$r->addRoute("users", "GET", "UserController", "showUsers"); //anda GENDERS ADMIN
+
 $r->addRoute("add", "POST", "GenderController", "addGender");//anda
 $r->addRoute("edit", "POST", "GenderController", "editGender");//anda
 $r->addRoute("delete", "POST", "GenderController", "deleteGender");//anda
-$r->addRoute("addSerie", "POST", "SerieController", "addSerie");//anda
+$r->addRoute("addSeri   e", "POST", "SerieController", "addSerie");//anda
 $r->addRoute("editSerie", "POST", "SerieController", "editSerie");//anda
 $r->addRoute("deleteSerie", "POST", "SerieController", "deleteSerie");//anda
 $r->addRoute("serie/:ID", "GET", "SerieController", "showDescripcionSeries");//anda
+$r->addRoute("delete", "POST", "UserController", "deleteUser");//anda
+
 
 $r->addRoute("genero/:ID", "GET", "SerieController", "showSeriesOfGender");
 

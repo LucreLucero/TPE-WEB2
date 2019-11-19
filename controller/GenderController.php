@@ -1,6 +1,7 @@
 <?php
 require_once('./model/GenderModel.php');
 require_once('./model/SerieModel.php');
+require_once('./model/UserModel.php');
 require_once('./view/GenderView.php');
 require_once('./controller/LogInController.php');
 
@@ -8,6 +9,7 @@ require_once('./controller/LogInController.php');
 
 class GenderController{
     private $model;
+    // private $
     private $modelSerie;
     private $view;
     private $LogInController;
@@ -27,18 +29,31 @@ class GenderController{
     public function showIndex(){
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $series = $this ->modelSerie -> getSeries();
-        
+
+        $usuarioLogueado = $this ->LogInController-> checkLoggedIn();//chequep que esté logueado        
         $this ->view -> displayVisitante($genders, $series);
     }
-    public function showIndexAdmin($existeGender = false, $existeSerie = false){//por defecto $existe es false
+    public function showIndexAdmin(){//por defecto $existe es false
         $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
+        $this ->view -> displayAdmin();
+        // $genders = $this->model->getGenders();//obtengo los generos desde el model
+        // $series = $this ->modelSerie -> getSeries();
         
-        $genders = $this->model->getGenders();//obtengo los generos desde el model
-        $series = $this ->modelSerie -> getSeries();
-        
-        $this ->view -> displayAdmin($genders, $series, $existeGender, $existeSerie);
+        // $this ->view -> displayAdmin($genders, $series, $existeGender, $existeSerie);
     }
-    
+    // public function showGenders($existeGender = false, $existeSerie = false){//por defecto $existe es false
+
+    public function showGenders($existeGender = false, $existeSerie = false){//por defecto $existe es false
+        $genders = $this->model->getGenders();
+         $series = $this ->modelSerie -> getSeries();
+        $this ->view -> displayGenders($genders, $series, $existeGender, $existeSerie);
+    }
+    public function showSeries( $existeSerie = false){//por defecto $existe es false
+        $genders = $this->model->getGenders();
+        $series = $this ->modelSerie -> getSeries();
+        $this ->view -> displaySeries($genders, $series, $existeSerie);
+    }
+    // ---------------
     public function getGender($genderName){
         $gender = $this->model->getGender($genderName);  
         return  $gender; 
@@ -58,25 +73,7 @@ class GenderController{
         $this ->view -> displayGenders($genders);
     }
 
-    // -------COSAS DE ADMINS QUE SE LOGUEAN----------
-
-// CHEQUEO DE LogIn  --->  REESCRIBIR
-    // public function checkLoggedIn(){
-    //     // session_destroy();
-    //     // session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
-        
-    //     // var_dump($_SESSION);
-    //     // var_dump($_SESSION['ID_USER']); die();
-    //     if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
-    //         header('Location: '. LOGIN);
-    //         die();//Luego de una redirección se suele llamar a la función
-    //                 //die() para forzar terminar la ejecución del script.
-    //     }
-    //     else{
-    //         // var_dump("entro");die();
-    //     }
-    // }
-
+    // -------COSAS DE ADMINS QUE SE LOGUEAN---------
     public function addGender(){
         
         $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
@@ -91,7 +88,7 @@ class GenderController{
                 // var_dump("lala");die;
                 // var_dump ($genderNameBBDD); die();
                 $this->model->insertGender($nameGender);
-                header("Location: " . BASE_URL. "enterSession");
+                header("Location: " . BASE_URL. "genders");
             }
             else{
                 $this -> showIndexAdmin($existeGender = true);
@@ -109,17 +106,18 @@ class GenderController{
             $nameGender = $_POST['nameGenderEdit'];
             $genderEdit = $_POST['genderEdit'];
             $this->model->editGender($nameGender, $genderEdit);
-            header("Location: " . BASE_URL . "enterSession");
+            header("Location: " . BASE_URL . "genders");
         }
     }
 
+    // acomodar el delete - aun no funciona
     public function deleteGender(){
         $this ->LogInController ->checkLoggedIn();
         // var_dump("HOL");
         // die();
         $genderID = $_POST['gender'];
         $this->model->deleteGender($genderID);
-        header("Location: " . BASE_URL . "enterSession");
+        header("Location: " . BASE_URL . "genders");
     }
     
     // public function getGender($gender){

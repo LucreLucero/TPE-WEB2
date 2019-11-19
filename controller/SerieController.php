@@ -13,13 +13,19 @@ class SerieController{
 
 
     public function __construct(){
-        session_start();
+        // session_start();
         $this->serieModel = new SerieModel();
         $this->GenderController = new GenderController();        
         $this->serieView = new SerieView();
         $this->LogInController = new LoginController();
 
     }
+    // public function showSeries( $existeSerie = false){//por defecto $existe es false
+    //     $genders = $this->model->getGenders();
+    //     $series = $this ->modelSerie -> getSeries();
+    //     $this ->view -> displaySeries($genders, $series, $existeSerie);
+    // }
+
 // ----------------------------------------------------------
     public function showDescripcionSeries($params=null){
         $idserieQueQuiero = $params[':ID'];
@@ -35,12 +41,12 @@ class SerieController{
     }
 // ----------------------------------------------------------
 
-    // public function getSerie($serieNombre){
-    //     $serie = $this->serieModel->getSerieDescription($serieNombre);
-    //     // $ID = $serie->id_gender;
-    //     // $this->serieView->showSerie($serie,);
-    //     return $serie;
-    // }
+    public function getSerie($serieNombre){
+        $serie = $this->serieModel->getSerieDescription($serieNombre);
+        // $ID = $serie->id_gender;
+        // $this->serieView->showSerie($serie,);
+        return $serie;
+    }
     // public function showSerie($infoSerie, $genderName){
     //     // $serie = $this->serieModel->getSerieDescription($serieNombre);
     //     // $ID = $serie->id_gender;
@@ -65,11 +71,11 @@ class SerieController{
             $descriptionSerie = $_POST['descriptionSerieAdd'];
             $scoreSerie = $_POST['scoreSerieAdd'];
             $gender = $_POST['gender'];
-            $SerieNameBBDD = $this ->getSerie($nameSerie);
+            $SerieNameBBDD = $this ->getSerie($nameSerie);// corroboro de que el name ingresado no exista  en la BBDD
             // var_dump($SerieNameBBDD);    die();
             if($SerieNameBBDD == null){
                 $this ->serieModel -> insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender);
-                header("Location: " . BASE_URL. "enterSession");
+                header("Location: " . BASE_URL. "series");
             }
             else{
                 var_dump("ya existe");die;
@@ -88,8 +94,9 @@ class SerieController{
             $scoreSerie = $_POST['scoreSerieEdit'];
             $gender = $_POST['genderEdit'];
             $recibido = $_POST['serieEdit'];
+            // var_dump($scoreSerie); die;
             $this->serieModel->editSerie($recibido, $nameSerie, $descriptionSerie, $scoreSerie, $gender);
-            header("Location: " . BASE_URL . "enterSession");
+            header("Location: " . BASE_URL . "series");
         }
     }
     public function deleteSerie(){
@@ -99,7 +106,7 @@ class SerieController{
             // die();
             $serieName = $_POST['serieDelete'];
             $this->serieModel->deleteSerie($serieName);
-            header("Location: " . BASE_URL . "enterSession");
+            header("Location: " . BASE_URL . "series");
 
         }
     }

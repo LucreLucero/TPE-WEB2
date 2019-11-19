@@ -22,9 +22,6 @@
             <option value="{$item->name}">{$item->name}</option>   
         {/foreach}
     </select>
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Seleccioanar</button>
-    </div>
     <input type="text" name= "nameGenderEdit" placeholder="Nuevo nombre"/>
     <button value="Editar" type="submit" class="btn btn-outline-secondary">Enviar</button>
     </div>
@@ -39,9 +36,6 @@
             <option value="{$item->name}">{$item->name}</option>   
         {/foreach}
     </select>
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Seleccioanar</button>
-    </div>
     <button value="Borrar" type="submit" class="btn btn-outline-secondary">Borrar</button>
     </div>
 </form>

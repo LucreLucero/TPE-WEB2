@@ -19,15 +19,36 @@ class GenderView {
         $this -> smarty -> display ('templates/series.tpl');
         $this -> smarty -> display ('templates/footer.tpl');
     }
-
-    public function displayAdmin($genders, $series, $existeGender, $existeSerie){       
-        
+    public function displayAdmin(){
+        $this -> smarty -> display ('templates/homeAdmin.tpl');    
+    }
+    public function displayGenders($genders, $series, $existeGender, $existeSerie){
         $this -> smarty -> assign ('existeGender', $existeGender);
         $this -> smarty -> assign ('existeSerie', $existeSerie);
         $this -> smarty -> assign ('genders', $genders);
-        $this -> smarty -> display ('templates/gendersAdmin.tpl');    
         $this -> smarty -> assign ('series', $series);
+        $this -> smarty -> display ('templates/gendersAdmin.tpl');    
+        // $this -> smarty -> display ('templates/seriesAdmin.tpl');
+        $this -> smarty -> display ('templates/footer.tpl');
+    }
+    public function displaySeries($genders, $series, $existeSerie){
+        // $this -> smarty -> assign ('existeGender', $existeGender);
+        $this -> smarty -> assign ('existeSerie', $existeSerie);
+        $this -> smarty -> assign ('genders', $genders);
+        $this -> smarty -> assign ('series', $series);
+        // $this -> smarty -> display ('templates/gendersAdmin.tpl');    
         $this -> smarty -> display ('templates/seriesAdmin.tpl');
         $this -> smarty -> display ('templates/footer.tpl');
     }
+
+    // public function displayAdmin($genders, $series, $existeGender, $existeSerie){       
+        
+    //     $this -> smarty -> assign ('existeGender', $existeGender);
+    //     $this -> smarty -> assign ('existeSerie', $existeSerie);
+    //     $this -> smarty -> assign ('genders', $genders);
+    //     $this -> smarty -> display ('templates/gendersAdmin.tpl');    
+    //     $this -> smarty -> assign ('series', $series);
+    //     $this -> smarty -> display ('templates/seriesAdmin.tpl');
+    //     $this -> smarty -> display ('templates/footer.tpl');
+    // }
 }

@@ -11,4 +11,6 @@
     <button type="submit" class="btn btn-primary">Entrar</button>
   </form>
 </div>
-
+{if $noEntro} 
+    <p>Login incorrecto. Vuelva a intentarlo </p>
+{/if}
