@@ -20,10 +20,14 @@ $r->addRoute("signIn", "GET", "LoginController", "showSignIn");//anda
 $r->addRoute("signInEnter", "POST", "LoginController", "signIn");//anda REGISTRARSE Y ENTRAR
 $r->addRoute("logout", "GET", "LoginController", "logout");//anda DESLOGUEARSE
 $r->addRoute("verifyLog", "POST", "LoginController", "verifyUser");//se activa al loguearse ANDA
+$r->addRoute("home", "GET", "GenderController", "showIndex");//se activa al loguearse ANDA
+
+
 $r->addRoute("homeAdmin", "GET", "GenderController", "showIndexAdmin");//HOME DE ADMINN
 $r->addRoute("genders", "GET", "GenderController", "showGenders"); //anda GENDERS ADMIN
 $r->addRoute("series", "GET", "GenderController", "showSeries"); //anda SERIES ADMIN
 $r->addRoute("users", "GET", "UserController", "showUsers"); //anda GENDERS ADMIN
+$r->addRoute("convertToAdmin/:ID", "GET", "UserController", "convertToAdminOrUser"); //anda GENDERS ADMIN
 
 $r->addRoute("add", "POST", "GenderController", "addGender");//anda
 $r->addRoute("edit", "POST", "GenderController", "editGender");//anda
@@ -32,9 +36,7 @@ $r->addRoute("addSeri   e", "POST", "SerieController", "addSerie");//anda
 $r->addRoute("editSerie", "POST", "SerieController", "editSerie");//anda
 $r->addRoute("deleteSerie", "POST", "SerieController", "deleteSerie");//anda
 $r->addRoute("serie/:ID", "GET", "SerieController", "showDescripcionSeries");//anda
-$r->addRoute("delete", "POST", "UserController", "deleteUser");//anda
-
-
+$r->addRoute("deleteUser", "POST", "UserController", "deleteUser");//anda
 $r->addRoute("genero/:ID", "GET", "SerieController", "showSeriesOfGender");
 
 

@@ -10,11 +10,11 @@ class LoginController{
     public function __construct(){
         $this-> view = new LoginView();
         $this-> model = new LoginModel();
+        session_start();
     }
 
     public function showLogin(){
         $this-> view-> showLogin();
-        
         // var_dump('entro aca');
         // die();
     }
@@ -28,8 +28,8 @@ class LoginController{
             $emailBD = $this-> model-> getByUserEmail($userEmail);
             //obtengo el email de la BBDD igual al ingresado por el usuario
             if((!empty($emailBD) && password_verify($password, $emailBD->pass))){
-                session_start();
-                if($emailBD->isAdmin == true){
+                // session_start();
+                if($emailBD ->isAdmin == true){
                     
                  $_SESSION['ID_USER'] = $emailBD ->id_user; 
                  $_SESSION['USERNAME'] = $emailBD ->name;
@@ -80,8 +80,18 @@ class LoginController{
             // var_dump("entro");die();
         }
     }
+    public function verifyAdmin(){
+        $id_user = $_SESSION['ID_USER'];
+        $user = $this ->model -> getByUserID($id_user);
+        if($user ->isAdmin == false){
+            header('Location: '. BASE_URL . "home");
+        };
+
+        
+    }
+
     public function logout() {
-        session_start();
+        // session_start();
 
         // foreach ($_SESSION as $key =>$value){
         //     $_SESSION[$key]= NULL;
@@ -111,7 +121,7 @@ class LoginController{
                 $emailBD = $this-> model-> getByUserEmail($userEmailSignIn);
                 //obtengo el email de la BBDD igual al ingresado por el usuario
                 if((!empty($emailBD) && password_verify($passwordSignIn, $emailBD->pass))){
-                    session_start();
+                    // session_start();
                  
                     //si usuario no esta vacio y la password ingresada es igual a la
                     //correspondiente del usuario en la tabla en la BBDD

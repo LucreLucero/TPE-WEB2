@@ -11,8 +11,9 @@ class UserView{
         $this ->smarty -> display ('templates/header.tpl');
         $this ->smarty -> display ('templates/index.tpl');
     }
-    public function showUsers($users){
+    public function showUsers($users = null,$AdminOrUser = null){
         $this -> smarty -> assign ('users', $users);
+        $this -> smarty -> assign ('AdminOrUser', $AdminOrUser);
         $this -> smarty -> display ('templates/users.tpl'); 
         $this -> smarty -> display ('templates/footer.tpl');
 

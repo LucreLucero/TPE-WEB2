@@ -1,23 +1,24 @@
 <?php
 require_once('./model/SerieModel.php');
+require_once('./model/GenderModel.php');
 require_once('./view/SerieView.php');
-require_once('./controller/GenderController.php');
+// require_once('./controller/GenderController.php');
 require_once('./controller/LogInController.php');
 
 
 class SerieController{
+    private $LogInController;
     private $serieModel;
     private $serieView;
-    private $GenderController;
-    private $LogInController;
+    private $GenderModel;
 
 
     public function __construct(){
         // session_start();
-        $this->serieModel = new SerieModel();
-        $this->GenderController = new GenderController();        
-        $this->serieView = new SerieView();
         $this->LogInController = new LoginController();
+        $this->serieModel = new SerieModel();
+        $this->GenderModel = new GenderModel();        
+        $this->serieView = new SerieView();
 
     }
     // public function showSeries( $existeSerie = false){//por defecto $existe es false
@@ -27,10 +28,11 @@ class SerieController{
     // }
 
 // ----------------------------------------------------------
-    public function showDescripcionSeries($params=null){
+    public function showDescripcionSeries($params = null){
         $idserieQueQuiero = $params[':ID'];
-        $serie = $this->getSerieEspecifica($idserieQueQuiero);
-        $genero = $this->GenderController->getGenderByID($serie);
+        $serie = $this ->getSerieEspecifica($idserieQueQuiero);
+        $genderID = $serie ->id_gender;
+        $genero = $this ->GenderModel ->getGenderByID($genderID);
         // var_dump($genero); die();
 
         $this->serieView->showSerie($serie, $genero);

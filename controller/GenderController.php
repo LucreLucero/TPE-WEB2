@@ -8,21 +8,21 @@ require_once('./controller/LogInController.php');
 
 
 class GenderController{
+    private $LogInController;
     private $model;
     // private $
     private $modelSerie;
     private $view;
-    private $LogInController;
     // private $seriesView;
 
     public function __construct(){
-        session_start();//llamo al sesion start
+        // session_start();//llamo al sesion start
+        $this->LogInController = new LoginController();
         $this->model = new GenderModel();
         $this->modelSerie = new SerieModel();
         //paso la function al constructor por que siempre se van a mostrar los generos
         $this->view = new GenderView();
         // $this->seriesView = new SeriesView();
-        $this->LogInController = new LoginController();
 
     }
     
@@ -30,25 +30,26 @@ class GenderController{
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $series = $this ->modelSerie -> getSeries();
 
-        $usuarioLogueado = $this ->LogInController-> checkLoggedIn();//chequep que esté logueado        
+        // $usuarioLogueado = $this ->LogInController-> checkLoggedIn();//chequep que esté logueado        
         $this ->view -> displayVisitante($genders, $series);
     }
     public function showIndexAdmin(){//por defecto $existe es false
-        $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
+        $this ->LogInController ->checkLoggedIn();//chequep que esté logueado
+        $this ->LogInController ->verifyAdmin();
         $this ->view -> displayAdmin();
-        // $genders = $this->model->getGenders();//obtengo los generos desde el model
-        // $series = $this ->modelSerie -> getSeries();
-        
-        // $this ->view -> displayAdmin($genders, $series, $existeGender, $existeSerie);
+
     }
-    // public function showGenders($existeGender = false, $existeSerie = false){//por defecto $existe es false
 
     public function showGenders($existeGender = false, $existeSerie = false){//por defecto $existe es false
+        $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
+        $this ->LogInController ->verifyAdmin();
         $genders = $this->model->getGenders();
-         $series = $this ->modelSerie -> getSeries();
+        $series = $this ->modelSerie -> getSeries();
         $this ->view -> displayGenders($genders, $series, $existeGender, $existeSerie);
     }
     public function showSeries( $existeSerie = false){//por defecto $existe es false
+        $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
+        $this ->LogInController ->verifyAdmin();
         $genders = $this->model->getGenders();
         $series = $this ->modelSerie -> getSeries();
         $this ->view -> displaySeries($genders, $series, $existeSerie);
@@ -60,12 +61,12 @@ class GenderController{
         // $this ->view -> displayGenders($genders);
     }
 
-    public function getGenderByID($infoSerie){
-        $genderID = $infoSerie ->id_gender;
-        $genderName = $this->model->getGenderByID($genderID);  
-        return  $genderName; 
-        // $this ->view -> displayGenders($genders);
-    }
+    // public function getGenderByID($infoSerie){
+    //     $genderID = $infoSerie ->id_gender;
+    //     $genderName = $this->model->getGenderByID($genderID);  
+    //     return  $genderName; 
+    //     // $this ->view -> displayGenders($genders);
+    // }
 
     // PARA HACER EL ORDENAMIENTO POR GENERO-----------
     public function getGenders(){

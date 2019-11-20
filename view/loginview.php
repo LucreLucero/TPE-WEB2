@@ -30,6 +30,7 @@ class LoginView{
         $this -> smarty -> assign('yaExisteEmail', $yaExisteEmail); 
         $this -> smarty -> assign('faltanDatos', $faltanDatos); 
         //le paso por medio de assign el nombre de la variable (titulo) y el contenido
+        
         $this -> smarty -> display('templates/signIn.tpl');
         //llamo a la funcion display en el template login
         $this -> smarty -> display('templates/footer.tpl');

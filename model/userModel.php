@@ -38,4 +38,14 @@ class UserModel{
         }
     }
 
+    public function convert($userID){ 
+        $query = $this->db->prepare("UPDATE checkuser SET isAdmin = IF(isAdmin = 1,0,1) WHERE id_user = ? ");
+        //preparo para inserta en la tabla de genero el nuevo genero
+        $ok = $query->execute(array($userID));
+        //ejecuto la accion
+        if(!$ok){
+            var_dump($query->errorInfo());
+            die();
+        }
+    }
 }

@@ -19,4 +19,12 @@ class LoginModel{
         $query = $this -> db -> prepare('INSERT INTO checkuser(email, pass, name) VALUES(?,?,?)');
         $query ->execute(array($userEmailSignIn, $hash, $userNameSignIn));
     }
+    // 
+    public function getByUserID($id_user){
+        //obtengo el mail de la BBDD igual al mail ingresado por el usuario
+        $query = $this -> db -> prepare('SELECT * FROM checkuser WHERE id_user = ?');
+        $query -> execute(array($id_user));
+        $user = $query -> fetch(PDO::FETCH_OBJ);
+        return $user;
+        }
 }

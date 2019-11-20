@@ -7,6 +7,10 @@ class SerieView {
 
     public function __construct(){
         $this->smarty = new Smarty();
+        $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        $this -> smarty -> display ('templates/header.tpl');
+        $this -> smarty -> display ('templates/index.tpl');        
+
     }
     
     // public function displaySeriesAdmin($series){       
@@ -15,11 +19,11 @@ class SerieView {
     //     $this -> smarty -> display ('templates/footer.tpl');
     // }
 
-    public function showSerie($infoSerie, $genderName ){
+    public function showSerie($serie, $genero ){
     // public function showSerie($serie, $genero){
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        $this -> smarty -> assign ('genderName', $genderName);
-        $this -> smarty -> assign ('serie', $infoSerie);
+        // $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        $this -> smarty -> assign ('genderName', $genero);
+        $this -> smarty -> assign ('serie', $serie);
 
         // $this -> smarty -> assign ('comments', $comments);        
         
