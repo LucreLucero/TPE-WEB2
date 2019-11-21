@@ -17,7 +17,7 @@
         </form>
     <div> *}
 
-    <form class="formAdd" method="POST" action="addSerie">
+    <form class="formAdd" method="POST" action="addSerie" enctype="multipart/form-data">
         <label>Agregar una serie:</label>
         <div class="input-group mb-3">
             <input type="text" class="form-control" name= "nameSerieAdd" placeholder="Serie" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -39,6 +39,9 @@
                     <option value="{$genero->id_gender}">{$genero->name}</option>   
                 {/foreach}
             </select>
+            {* aca agrego la imagen al agregar una serie *}
+            <input type="file" name="imagen" id="" class="form-control" placeholder="Imagen" aria-label="Recipient's username" aria-describedby="button-addon2">
+
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Agregar</button>
             </div>
@@ -49,7 +52,7 @@
     {/if}
     
         {*-------- para editar las series-------- *}
-    <form class="formAdd" method="POST" name= "nameGenderEdit" action="editSerie">
+    <form class="formAdd" method="POST" name= "nameGenderEdit" action="editSerie" enctype="multipart/form-data">
         <label>Editar una serie:</label>
         <div class="input-group">
             <select name="serieEdit" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">

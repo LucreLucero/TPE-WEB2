@@ -40,10 +40,10 @@ class SerieModel{
         // var_dump($seriesOfGender);die();
         return $seriesOfGender;
     }
-    public function insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender){
+    public function insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender, $imagen = null){
         $query = $this -> db-> prepare("INSERT INTO series(name, description, score, id_gender) VALUES (?, ?, ?, ?)");
         //preparo para inserta en la tabla de genero el nuevo genero
-        $query -> execute(array($nameSerie, $descriptionSerie, $scoreSerie, $gender));
+        $query -> execute(array($nameSerie, $descriptionSerie, $scoreSerie, $gender, imagen));
         //ejecuto la accion
     }
     //EDITAR UNA SERIE

@@ -5,12 +5,23 @@
     
 }
 body{
-    background-color:#A993BF;
+    background-color:whitesmoke;
 
 
 }
 .lista{
     padding-left: 5%;
+}
+.container-admin{
+    padding-left: 20%;  
+    display: flex;
+    
+}
+#lista{
+    flex-direction: row;
+    margin: 4px;
+    padding: 5px;
+    align-items: center;
 }
 .container{
     width: 70%;
@@ -35,7 +46,8 @@ h6{
 }
 .formAdd{
     padding-left: 24%;  
-    width: 75%;
+    width:
+     75%;
     /* height: 300px; */
     /* align-items: center; */
 }

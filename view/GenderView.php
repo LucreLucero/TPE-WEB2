@@ -20,7 +20,9 @@ class GenderView {
         $this -> smarty -> display ('templates/footer.tpl');
     }
     public function displayAdmin(){
-        $this -> smarty -> display ('templates/homeAdmin.tpl');    
+        $this -> smarty -> display ('templates/homeAdmin.tpl');  
+        // $this -> smarty -> display ('templates/footer.tpl');
+  
     }
     public function displayGenders($genders, $series, $existeGender, $existeSerie){
         $this -> smarty -> assign ('existeGender', $existeGender);

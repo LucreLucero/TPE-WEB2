@@ -49,23 +49,18 @@ class SerieController{
         // $this->serieView->showSerie($serie,);
         return $serie;
     }
-    // public function showSerie($infoSerie, $genderName){
-    //     // $serie = $this->serieModel->getSerieDescription($serieNombre);
-    //     // $ID = $serie->id_gender;
-    //     $this->serieView->showSerie($infoSerie, $genderName);
-    // }
     
     public function showSeriesOfGender($params=null){ 
         $ID = $params[':ID'];
-        // var_dump($ID); die();
         $seriesOfGender =  $this ->serieModel ->getSeriesOfGender($ID);
-        
-
         $this ->serieView ->ShowSeriesOfGender($seriesOfGender);
     }
 
+
+// MODIFICAR SERIES
     public function addSerie(){
         $this ->LogInController ->checkLoggedIn();
+        $this ->LogInController ->verifyAdmin();
         if(($_POST['nameSerieAdd'])!='' && ($_POST['descriptionSerieAdd']) !='' 
         && ($_POST['scoreSerieAdd']) !='' && ($_POST['gender'])){
             
@@ -73,10 +68,22 @@ class SerieController{
             $descriptionSerie = $_POST['descriptionSerieAdd'];
             $scoreSerie = $_POST['scoreSerieAdd'];
             $gender = $_POST['gender'];
+            $imagen = $_FILES['imagen'];
             $SerieNameBBDD = $this ->getSerie($nameSerie);// corroboro de que el name ingresado no exista  en la BBDD
-            // var_dump($SerieNameBBDD);    die();
+            if($imagen){
+                if ($imagen['type'] == "image/jpeg" || $imagen['type'] == "image/jpg" || $imagen['type'] == "image/png") {
+                
+                    
+                }
+                else {
+                    $this->view->showError("Formato no aceptado");
+                    die();
+                }
+    
+            }
+
             if($SerieNameBBDD == null){
-                $this ->serieModel -> insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender);
+                $this ->serieModel -> insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender, $imagen);
                 header("Location: " . BASE_URL. "series");
             }
             else{
@@ -89,6 +96,7 @@ class SerieController{
     }
     public function editSerie(){
         $this ->LogInController ->checkLoggedIn();
+        $this ->LogInController ->verifyAdmin();
         if(($_POST['nameSerieEdit'])!='' && ($_POST['descriptionSerieEdit']) !='' 
         && ($_POST['scoreSerieEdit']) !='' && ($_POST['genderEdit'])!='' && ($_POST['serieEdit'])!=''){
             $nameSerie = $_POST['nameSerieEdit'];
@@ -103,6 +111,7 @@ class SerieController{
     }
     public function deleteSerie(){
         $this ->LogInController ->checkLoggedIn();
+        $this ->LogInController ->verifyAdmin();
         if(($_POST['serieDelete'])!=''){
             // var_dump($serieName);
             // die();

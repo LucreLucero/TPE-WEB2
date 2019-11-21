@@ -11,6 +11,7 @@ define("LOGIN", BASE_URL . 'login');
 define("LOGOUT", BASE_URL . 'logout');  
 define("SIGNIN", BASE_URL . 'signIn');
 define("URL_SERIE", BASE_URL . 'serie');
+// define("HOME_ADMIN", BASE_URL . 'homeAdmin');
 
 $r = new Router();// Router se encarga de 
 
