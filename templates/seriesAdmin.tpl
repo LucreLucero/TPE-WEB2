@@ -40,7 +40,7 @@
                 {/foreach}
             </select>
             {* aca agrego la imagen al agregar una serie *}
-            <input type="file" name="imagen" id="" class="form-control" placeholder="Imagen" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input type="file" name="images" id="" multiple class="form-control" placeholder="Imagen" aria-label="Recipient's username" aria-describedby="button-addon2">
 
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Agregar</button>
@@ -57,7 +57,7 @@
         <div class="input-group">
             <select name="serieEdit" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                 {foreach from=$series item=serie }
-                    <option value="{$serie->name}">{$serie->name}</option>   
+                    <option value="{$serie["name"]}">{$serie["name"]}</option>   
                 {/foreach}
             </select>
             <input type="text" name = "nameSerieEdit" placeholder="Serie"/>
@@ -92,7 +92,7 @@
     <div class="input-group" >
             <select name="serieDelete" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                 {foreach from=$series item=serie }
-                    <option value="{$serie->name}">{$serie->name}</option>   
+                    <option value="{$serie["name"]}">{$serie["name"]}</option>   
                 {/foreach}
             </select>
             <button type="submit" value="Borrar" class="btn btn-outline-secondary">Borrar</button>

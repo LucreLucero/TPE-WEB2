@@ -58,7 +58,7 @@ class SerieController{
 
 
 // MODIFICAR SERIES
-    public function addSerie(){
+    public function addSerie(){//recibo las imagenes con el tipo checkeado
         $this ->LogInController ->checkLoggedIn();
         $this ->LogInController ->verifyAdmin();
         if(($_POST['nameSerieAdd'])!='' && ($_POST['descriptionSerieAdd']) !='' 
@@ -68,32 +68,61 @@ class SerieController{
             $descriptionSerie = $_POST['descriptionSerieAdd'];
             $scoreSerie = $_POST['scoreSerieAdd'];
             $gender = $_POST['gender'];
-            $imagen = $_FILES['imagen'];
-            $SerieNameBBDD = $this ->getSerie($nameSerie);// corroboro de que el name ingresado no exista  en la BBDD
-            if($imagen){
-                if ($imagen['type'] == "image/jpeg" || $imagen['type'] == "image/jpg" || $imagen['type'] == "image/png") {
-                
-                    
-                }
-                else {
-                    $this->view->showError("Formato no aceptado");
-                    die();
-                }
-    
-            }
+            // $_FILES[“input_name”][“name”]
 
-            if($SerieNameBBDD == null){
-                $this ->serieModel -> insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender, $imagen);
-                header("Location: " . BASE_URL. "series");
+            $images = $_FILES['images'];
+            // var_dump($images);die();
+
+            $TemporalImageRoute = $_FILES['images']['tmp_name'];
+            $isImage = $this ->isImage($images);
+            $SerieNameBBDD = $this ->getSerie($nameSerie);// corroboro de que el name ingresado no exista  en la BBDD
+            if($SerieNameBBDD == null){  //&& $isImage == true ){
+                if ($isImage == true ){ 
+                    // var_dump( $images);die;
+                    
+                    $this ->serieModel -> insertSerie($nameSerie, $descriptionSerie, $scoreSerie, $gender, $images);
+                    header("Location: " . BASE_URL. "series");
+                }
+                else{                
+                    var_dump("formato no aceptado");die;
+                }
             }
             else{
                 var_dump("ya existe");die;
                 $this ->GenderController ->showIndexAdmin($existeSerie = true);
-
+                
+            }
+        }   
+    }
+    private function isImage($images){ //compruebo las imagenes y las retorno a addSerie
+        $cantImages = count([$images['type']]);
+        // var_dump($cantImages);die();
+        $areImg = true;
+        if($cantImages > 1){
+            for ($i=0;$i<$cantImages;$i++){
+                $imageClass = $images['type'][$i];
+                if($imageClass == "image/jpeg" || $imageClass == "image/jpg" || $imageClass == "image/png"){
+                    $areImg = true;
+                }
+                else{
+                    $areImg = false;
+                }
             }
         }
-        
+        else{
+            // var_dump($images['type']); die;
+            $imgType = $images["type"];
+            if($imgType == "image/jpeg" || $imgType == "image/jpg" || $imgType == "image/png"){
+                $areImg = true;
+            }
+            else{
+                $areImg = false;
+            }
+        }
+        return $areImg;
     }
+
+
     public function editSerie(){
         $this ->LogInController ->checkLoggedIn();
         $this ->LogInController ->verifyAdmin();

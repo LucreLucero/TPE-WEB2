@@ -45,6 +45,8 @@ class GenderController{
         $this ->LogInController ->verifyAdmin();
         $genders = $this->model->getGenders();
         $series = $this ->modelSerie -> getSeries();
+        // var_dump ("holaa"); die();
+        
         $this ->view -> displayGenders($genders, $series, $existeGender, $existeSerie);
     }
     public function showSeries( $existeSerie = false){//por defecto $existe es false
@@ -52,6 +54,7 @@ class GenderController{
         $this ->LogInController ->verifyAdmin();
         $genders = $this->model->getGenders();
         $series = $this ->modelSerie -> getSeries();
+        // var_dump ($series); die();
         $this ->view -> displaySeries($genders, $series, $existeSerie);
     }
     // ---------------

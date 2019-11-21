@@ -33,7 +33,7 @@ $r->addRoute("convertToAdmin/:ID", "GET", "UserController", "convertToAdminOrUse
 $r->addRoute("add", "POST", "GenderController", "addGender");//anda
 $r->addRoute("edit", "POST", "GenderController", "editGender");//anda
 $r->addRoute("delete", "POST", "GenderController", "deleteGender");//anda
-$r->addRoute("addSeri   e", "POST", "SerieController", "addSerie");//anda
+$r->addRoute("addSerie", "POST", "SerieController", "addSerie");//anda
 $r->addRoute("editSerie", "POST", "SerieController", "editSerie");//anda
 $r->addRoute("deleteSerie", "POST", "SerieController", "deleteSerie");//anda
 $r->addRoute("serie/:ID", "GET", "SerieController", "showDescripcionSeries");//anda

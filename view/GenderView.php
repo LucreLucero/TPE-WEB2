@@ -24,6 +24,8 @@ class GenderView {
         // $this -> smarty -> display ('templates/footer.tpl');
   
     }
+    // <img src="{$serie['route']}" alt="Imagen de la serie {$serie->name}">
+
     public function displayGenders($genders, $series, $existeGender, $existeSerie){
         $this -> smarty -> assign ('existeGender', $existeGender);
         $this -> smarty -> assign ('existeSerie', $existeSerie);

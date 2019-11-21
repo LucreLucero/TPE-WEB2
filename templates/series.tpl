@@ -24,10 +24,15 @@
                 <p class="list-group-item active">Series</p>
                 {foreach from=$series item=serie}
                     <li>
-                        <a href="{$BASE_URL}serie/{$serie->name}" class="list-group-item">{$serie->name}</a>
+                        <a href="{$BASE_URL}serie/{$serie["name"]}" class="list-group-item">{$serie["name"]}</a>
                     </li>
+                    {foreach from=$series['imagenes'] item=image}
+                        <li>
+                            <img src="{$image["path"]}" alt="Imagen de la serie {$serie["name"]}">
+                            {* <a href="{$BASE_URL}serie/{$serie->name}" class="list-group-item">{$serie->name}</a> *}
+                        </li>
+                    {/foreach}
                 {/foreach}
-
             </ul>
         </form>
     </div>
