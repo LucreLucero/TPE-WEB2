@@ -21,7 +21,9 @@ class GenderController{
         $this->model = new GenderModel();
         $this->modelSerie = new SerieModel();
         //paso la function al constructor por que siempre se van a mostrar los generos
-        $this->view = new GenderView();
+        $isAdmin = $this ->LogInController ->isAdmin();
+        // var_dump($isAdmin);
+        $this->view = new GenderView($isAdmin);
         // $this->seriesView = new SeriesView();
 
     }
@@ -29,9 +31,19 @@ class GenderController{
     public function showIndex(){
         $genders = $this->model->getGenders();//obtengo los generos desde el model
         $series = $this ->modelSerie -> getSeries();
-
+        // $arrImage = [];
+        $images = [];
+        // foreach($series as $serie){
+        //     // var_dump($serie['id_serie']); die;
+        //     $images = $this->modelSerie-> getImage($serie['id_serie']);
+        //     // $arrImage.array_push($images);
+        //     // var_dump($this->modelSerie-> getImage($serie['id_serie']));die;
+            
+        // }
+        // var_dump($images);die;
+        // $images.array_push($x); 
         // $usuarioLogueado = $this ->LogInController-> checkLoggedIn();//chequep que esté logueado        
-        $this ->view -> displayVisitante($genders, $series);
+        $this ->view -> displayVisitante($genders, $series, $images);
     }
     public function showIndexAdmin(){//por defecto $existe es false
         $this ->LogInController ->checkLoggedIn();//chequep que esté logueado
@@ -49,13 +61,16 @@ class GenderController{
         
         $this ->view -> displayGenders($genders, $series, $existeGender, $existeSerie);
     }
+    // MUESTRO LAS SERIES PARA ADMIN
     public function showSeries( $existeSerie = false){//por defecto $existe es false
         $this ->LogInController-> checkLoggedIn();//chequep que esté logueado
         $this ->LogInController ->verifyAdmin();
         $genders = $this->model->getGenders();
         $series = $this ->modelSerie -> getSeries();
+        // $images = $this->modelSerie-> getImage($series->id_serie);
+
         // var_dump ($series); die();
-        $this ->view -> displaySeries($genders, $series, $existeSerie);
+        $this ->view -> displaySeries($genders, $series, $existeSerie);//, $images);
     }
     // ---------------
     public function getGender($genderName){
@@ -117,9 +132,14 @@ class GenderController{
     // acomodar el delete - aun no funciona
     public function deleteGender(){
         $this ->LogInController ->checkLoggedIn();
-        // var_dump("HOL");
         // die();
         $genderID = $_POST['gender'];
+        $serieID = $this->modelSerie ->getSeriesOfGender($genderID);
+        foreach ($serieID as $serie ) {
+            $ID = $serie->id_serie;
+            $this->modelSerie->deleteSerieByGender($ID);    
+        }
+     
         $this->model->deleteGender($genderID);
         header("Location: " . BASE_URL . "genders");
     }

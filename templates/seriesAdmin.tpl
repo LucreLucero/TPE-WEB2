@@ -1,22 +1,5 @@
 {include file="series.tpl" }
                         {* ---------- AGREGAR UNA SERIE ---------- *}
-{* <div class="seriesAdmin">
-    <div class= "addSerie">
-        <form class="addSerie" method="POST" action="enterSession/addSerie">
-            <label>Agrega una serie:</label>
-            <input type="text" name = "nameSerieAdd" placeholder="Serie"/>
-            <input type="text" name = "descriptionSerieAdd" placeholder="Descripcion"/>
-            <input type="number" name = "scoreSerieAdd" placeholder="Puntaje"/>
-            <select name="gender">
-                {foreach from=$genders item=genero }
-                    <option value="{$genero->id_gender}">{$genero->name}</option>   
-                {/foreach}
-            </select>
-
-            <button type="submit">Agregar</button>
-        </form>
-    <div> *}
-
     <form class="formAdd" method="POST" action="addSerie" enctype="multipart/form-data">
         <label>Agregar una serie:</label>
         <div class="input-group mb-3">
@@ -92,7 +75,7 @@
     <div class="input-group" >
             <select name="serieDelete" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
                 {foreach from=$series item=serie }
-                    <option value="{$serie["name"]}">{$serie["name"]}</option>   
+                    <option value="{$serie["id_serie"]}">{$serie["name"]}</option>   
                 {/foreach}
             </select>
             <button type="submit" value="Borrar" class="btn btn-outline-secondary">Borrar</button>

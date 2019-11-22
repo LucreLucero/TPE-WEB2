@@ -12,16 +12,11 @@ class SerieView {
         $this -> smarty -> display ('templates/index.tpl');        
 
     }
-    
-    // public function displaySeriesAdmin($series){       
-    //     $this -> smarty -> assign ('series', $series);
-    //     $this -> smarty -> display ('templates/seriesAdmin.tpl');
-    //     $this -> smarty -> display ('templates/footer.tpl');
-    // }
-
-    public function showSerie($serie, $genero, $images ){
+// MUESTRO LAS SERIES CON SU DESCRIPCION --ESTE ANDA
+    public function showSerie($serie, $genero, $images=null ){
     // public function showSerie($serie, $genero){
         // $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        // var_dump($images); die();
         $this -> smarty -> assign ('genderName', $genero);
         $this -> smarty -> assign ('serie', $serie);
         $this -> smarty -> assign ('images', $images);

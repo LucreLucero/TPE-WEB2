@@ -87,10 +87,22 @@ class LoginController{
         $id_user = $_SESSION['ID_USER'];
         $user = $this ->model -> getByUserID($id_user);
         if($user ->isAdmin == false){
-            header('Location: '. BASE_URL . "home");
+            header('Location: '. BASE_URL . "home");die;
         };
+    }
+    public function isAdmin(){
+        if(isset($_SESSION['ID_USER'])){
 
-        
+            $id_user = $_SESSION['ID_USER'];
+            $user = $this ->model -> getByUserID($id_user);
+            // var_dump($user);die;
+            if($user ->isAdmin == false){
+                // header('Location: '. BASE_URL . "home");die;
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     public function logout() {
@@ -118,6 +130,7 @@ class LoginController{
             $emailBBDD = $this-> model-> getByUserEmail($userEmailSignIn);//busco que si existe en la BBDD un usuario con ese email
             if($emailBBDD == null){//sino existe
                 //transformo la pass a hash 
+
                 $hash = password_hash($passwordSignIn, PASSWORD_DEFAULT);//hash a la password
                 $this -> model -> signIn($userEmailSignIn, $hash, $userNameSignIn);//lo envio al model
                 //hasta acá anda

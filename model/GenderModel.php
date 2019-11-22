@@ -58,7 +58,7 @@
     }
 //BORRAR UN GENERO
     public function deleteGender($genderID){ //obtener un genero
-        $query = $this->db->prepare("DELETE FROM genero WHERE name = ?");
+        $query = $this->db->prepare("DELETE FROM genero WHERE id_gender = ?");
         //preparo para inserta en la tabla de genero el nuevo genero
         $ok = $query->execute(array($genderID));
         if(!$ok){

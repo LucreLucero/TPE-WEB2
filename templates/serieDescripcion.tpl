@@ -15,8 +15,11 @@
     {* <form action="genero" method="post"> *}
         <ul class="formAdd">
             <p class="list-group-item list-group-item-action active">Especificaciones de {$serie->name}</p>
-            <div class ="imagenes">
-                <li>>>Aca va la foto {*<img src="{$BASE_URL}/{image}" >*}</li>
+            <div class ="list-group-item" id="imagenes">
+                {foreach from=$images item=image}
+                    <img src="../{$image->path}" alt="Imagen de la serie {$serie ->name}">
+                            
+                {/foreach}
             </div>
             <div {*class="lista"*} class="list-group-item">
                 <li>>>Nombre: {$serie ->name} </li>         

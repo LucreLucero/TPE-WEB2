@@ -33,7 +33,7 @@
     <div class="input-group">
     <select name="gender" class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
         {foreach from= $genders item= item }
-            <option value="{$item->name}">{$item->name}</option>   
+            <option value="{$item->id_gender}">{$item->name}</option>   
         {/foreach}
     </select>
     <button value="Borrar" type="submit" class="btn btn-outline-secondary">Borrar</button>

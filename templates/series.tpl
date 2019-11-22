@@ -24,15 +24,21 @@
                 <p class="list-group-item active">Series</p>
                 {foreach from=$series item=serie}
                     <li>
-                        <a href="{$BASE_URL}serie/{$serie["name"]}" class="list-group-item">{$serie["name"]}</a>
-                    </li>
-                    {foreach from= {$images["id_image"]} item=image}
+                        {* {foreach from=$images item=image} *}
+                        {* {if $serie->id_serie == $image->id_serie}
+                            
+                            <img src="./{$image->path}" alt="Imagen de la serie {$serie ->name}">
+                        {/if} *}
+                    {* {foreach from= {$images["id_image"]} item=image} *}
                     {* echo $serie; *}
                         {* <li> *}
-                            <img src="{$image["path"]}" alt="Imagen de la serie {$serie["name"]}">
+
+                            {* <img src="{$image["path"]}" alt="Imagen de la serie {$serie["name"]}"> *}
                             {* <a href="{$BASE_URL}serie/{$serie->name}" class="list-group-item">{$serie->name}</a> *}
                         {* </li> *}
-                    {/foreach}
+                        {* {/foreach} *}
+                        <a href="{$BASE_URL}serie/{$serie["name"]}" class="list-group-item">{$serie["name"]}</a>
+                    </li>
                 {/foreach}
             </ul>
         </form>

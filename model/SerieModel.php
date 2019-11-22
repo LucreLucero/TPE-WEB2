@@ -44,7 +44,7 @@ class SerieModel{
     }
     // TABLA BUSCO EN LA TABLA IMAGENES
     public function getImage($idImg){//busco las imagenes por id en la BBDD
-        $query = $this ->db ->prepare("SELECT * FROM imagenes WHERE id_image = ?");
+        $query = $this ->db ->prepare("SELECT * FROM imagenes WHERE id_serie = ?");
         $ok = $query -> execute(array($idImg));
         if(!$ok){
            var_dump($query->errorInfo());
@@ -72,15 +72,15 @@ class SerieModel{
         $cantImages = count($images['name']);
         if($cantImages > 1){
             for ($i = 0; $i < $cantImages; $i++){
-                var_dump(pathinfo($images['name'][$i],PATHINFO_EXTENSION)); die;
+                // var_dump(pathinfo($images['name'][$i],PATHINFO_EXTENSION)); die;
                 $final_route = 'imagenes/' . uniqid() . "." . strtolower(pathinfo($images['name'][$i],PATHINFO_EXTENSION));// preguntar como digo que pueden ser jpg, jpeg, png
                 move_uploaded_file($images['tmp_name'][$i], $final_route);
                 $query_images-> execute(array($id_serie, $final_route));
             }
         }
         else{
-            $final_route = 'imagenes/' . uniqid() . "." . strtolower(pathinfo($images['name'],PATHINFO_EXTENSION));// preguntar como digo que pueden ser jpg, jpeg, png
-            move_uploaded_file($images['tmp_name'], $final_route);
+            $final_route = 'imagenes/' . uniqid() . "." . strtolower(pathinfo($images['name'][0],PATHINFO_EXTENSION));// preguntar como digo que pueden ser jpg, jpeg, png
+            move_uploaded_file($images['tmp_name'][0], $final_route);
             $query_images-> execute(array($id_serie, $final_route));
             
         }
@@ -112,10 +112,41 @@ class SerieModel{
             die();
         }
     }
+
+    public function deleteImages($serieID){ //borro las imagenes de la tabla
+        // var_dump($serieName);
+        // die();
+        // var_dump("fe");die;
+        $query = $this->db->prepare("DELETE FROM imagenes WHERE id_serie = ?");
+        //preparo para inserta en la tabla de genero el nuevo genero
+        $ok = $query->execute(array($serieID));
+        if(!$ok){
+            var_dump($query->errorInfo());
+            die();
+        }
+    }
+    public function deleteSerieByGender($ID){ //obtener un genero
+        // var_dump($serieName);
+        // die();
+        // var_dump($genderID);die;
+
+        $this -> deleteImages($ID);
+        $query = $this->db->prepare("DELETE FROM series WHERE id_serie = ?");
+        //preparo para inserta en la tabla de genero el nuevo genero
+        $ok = $query->execute(array($ID));
+        if(!$ok){
+            var_dump($query->errorInfo());
+            die();
+        }
+        // var_dump("fe");die;
+
+    }
+    
     public function deleteSerie($serieName){ //obtener un genero
         // var_dump($serieName);
         // die();
-        $query = $this->db->prepare("DELETE FROM series WHERE name = ?");
+        $this -> deleteImages($serieName);
+        $query = $this->db->prepare("DELETE FROM series WHERE id_serie = ?");
         //preparo para inserta en la tabla de genero el nuevo genero
         $ok = $query->execute(array($serieName));
         if(!$ok){

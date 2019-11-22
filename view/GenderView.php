@@ -5,17 +5,22 @@ class GenderView {
 
     private $smarty;
 
-    public function __construct(){
+    public function __construct($isAdmin = false){
         $this->smarty = new Smarty();
-        $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        // var_dump($isAdmin);
+        $this -> smarty -> assign ('BASE_URL', BASE_URL); 
+        $this -> smarty -> assign ('isAdmin', $isAdmin);
         $this -> smarty -> display ('templates/header.tpl');
         $this -> smarty -> display ('templates/index.tpl');
+
     }
     
-    public function displayVisitante($genders, $series){
+    public function displayVisitante($genders, $series, $images){
         $this -> smarty -> assign ('genders', $genders);
         $this -> smarty -> display ('templates/genders.tpl'); 
         $this -> smarty -> assign ('series', $series);
+        $this -> smarty -> assign ('images', $images);
+
         $this -> smarty -> display ('templates/series.tpl');
         $this -> smarty -> display ('templates/footer.tpl');
     }

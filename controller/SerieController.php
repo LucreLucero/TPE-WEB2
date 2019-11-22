@@ -34,7 +34,7 @@ class SerieController{
         $genderID = $serie ->id_gender;
         $genero = $this ->GenderModel ->getGenderByID($genderID);
         $images = $this->serieModel-> getImage($serie->id_serie);
-        // var_dump($genero); die();
+        // var_dump($images); die();
 
         $this->serieView->showSerie($serie, $genero, $images);
     }
@@ -97,7 +97,7 @@ class SerieController{
     }
     private function isImage($images){ //compruebo las imagenes y las retorno a addSerie
         $cantImages = count([$images['type']]);
-        // var_dump($cantImages);die();
+        // var_dump($cantImages);die(+);
         $areImg = true;
         if($cantImages > 1){
             for ($i=0;$i<$cantImages;$i++){
@@ -111,8 +111,12 @@ class SerieController{
             }
         }
         else{
+            // var_dump($areImg . "aqui");die;
+
             // var_dump($images['type']); die;
-            $imgType = $images["type"];
+            $imgType = $images["type"][0];
+            // var_dump($imgType[0]);die;
+
             if($imgType == "image/jpeg" || $imgType == "image/jpg" || $imgType == "image/png"){
                 $areImg = true;
             }
@@ -120,6 +124,7 @@ class SerieController{
                 $areImg = false;
             }
         }
+        // var_dump($areImg);die;
         return $areImg;
     }
 
@@ -146,6 +151,8 @@ class SerieController{
             // var_dump($serieName);
             // die();
             $serieName = $_POST['serieDelete'];
+            // var_dump($serieName);die;
+            // $imageID = $this->serieModel-> getImage($serie->id_serie);
             $this->serieModel->deleteSerie($serieName);
             header("Location: " . BASE_URL . "series");
 
