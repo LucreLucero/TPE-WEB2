@@ -19,11 +19,12 @@ class SerieView {
     //     $this -> smarty -> display ('templates/footer.tpl');
     // }
 
-    public function showSerie($serie, $genero ){
+    public function showSerie($serie, $genero, $images ){
     // public function showSerie($serie, $genero){
         // $this -> smarty -> assign ('BASE_URL', BASE_URL);
         $this -> smarty -> assign ('genderName', $genero);
         $this -> smarty -> assign ('serie', $serie);
+        $this -> smarty -> assign ('images', $images);
 
         // $this -> smarty -> assign ('comments', $comments);        
         

@@ -26,11 +26,12 @@
                     <li>
                         <a href="{$BASE_URL}serie/{$serie["name"]}" class="list-group-item">{$serie["name"]}</a>
                     </li>
-                    {foreach from=$series['imagenes'] item=image}
-                        <li>
+                    {foreach from= {$images["id_image"]} item=image}
+                    {* echo $serie; *}
+                        {* <li> *}
                             <img src="{$image["path"]}" alt="Imagen de la serie {$serie["name"]}">
                             {* <a href="{$BASE_URL}serie/{$serie->name}" class="list-group-item">{$serie->name}</a> *}
-                        </li>
+                        {* </li> *}
                     {/foreach}
                 {/foreach}
             </ul>

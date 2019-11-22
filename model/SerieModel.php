@@ -43,9 +43,9 @@ class SerieModel{
         return $serie;
     }
     // TABLA BUSCO EN LA TABLA IMAGENES
-    public function getImage($ID){//busco las imagenes por id en la BBDD
-        $query = $this ->db ->prepare("SELECT * FROM imagenes WHERE id");
-        $ok = $query -> execute(array($ID));
+    public function getImage($idImg){//busco las imagenes por id en la BBDD
+        $query = $this ->db ->prepare("SELECT * FROM imagenes WHERE id_image = ?");
+        $ok = $query -> execute(array($idImg));
         if(!$ok){
            var_dump($query->errorInfo());
            die();
@@ -82,9 +82,7 @@ class SerieModel{
             $final_route = 'imagenes/' . uniqid() . "." . strtolower(pathinfo($images['name'],PATHINFO_EXTENSION));// preguntar como digo que pueden ser jpg, jpeg, png
             move_uploaded_file($images['tmp_name'], $final_route);
             $query_images-> execute(array($id_serie, $final_route));
-            // $final_route = 'imagenes/' . uniqid() . "." . strtolower(pathinfo($image['name'][$i],PATHINFO_EXTENSION));// preguntar como digo que pueden ser jpg, jpeg, png
-            // move_uploaded_file($image['tmp_name'][$i], $final_route);
-            // $query_images-> execute(array($id_serie,$final_route));
+            
         }
       }	 
 // agrego la serie con la imagen (si es que tiene)
@@ -98,13 +96,7 @@ class SerieModel{
             $id_serie = $this->db->lastInsertId();
             $this->uploadImages($images, $id_serie);
         }
-        // var_dump($image); die();
-        // $routes = $this->uploadImages($image);
 
-        // $query_images = $this -> prepare("INSERT INTO imagenes(id_image, path) VALUES (?,?)");
-        // foreach ($routes as $route){
-        //     $query_images->execute(array($id_serie,$route));
-        // }
     }
 
 

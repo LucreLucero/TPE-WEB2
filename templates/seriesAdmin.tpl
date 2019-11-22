@@ -39,8 +39,8 @@
                     <option value="{$genero->id_gender}">{$genero->name}</option>   
                 {/foreach}
             </select>
-            {* aca agrego la imagen al agregar una serie *}
-            <input type="file" name="images" id="" multiple class="form-control" placeholder="Imagen" aria-label="Recipient's username" aria-describedby="button-addon2">
+            {* aca agrego con un INPUT la imagen al agregar una serie *}
+            <input type="file" name="images[]" multiple id="images"  class="form-control" placeholder="Imagen" aria-label="Recipient's username" aria-describedby="button-addon2">
 
             <div class="input-group-append">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Agregar</button>

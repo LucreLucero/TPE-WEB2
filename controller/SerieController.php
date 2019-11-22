@@ -33,9 +33,10 @@ class SerieController{
         $serie = $this ->getSerieEspecifica($idserieQueQuiero);
         $genderID = $serie ->id_gender;
         $genero = $this ->GenderModel ->getGenderByID($genderID);
+        $images = $this->serieModel-> getImage($serie->id_serie);
         // var_dump($genero); die();
 
-        $this->serieView->showSerie($serie, $genero);
+        $this->serieView->showSerie($serie, $genero, $images);
     }
     public function getSerieEspecifica($idserieQueQuiero){
         $serie = $this->serieModel->getSerieDescription($idserieQueQuiero);
