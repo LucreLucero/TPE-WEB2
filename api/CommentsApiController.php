@@ -50,8 +50,5 @@ class CommentsApiController{
             } else{
                 $this ->view ->response("El comentario no fue creado", 500);
             }
-    }
-
-
-    
+    }    
 }

@@ -1,4 +1,13 @@
-{* vista del listado de los comentarios *}
+<div class="comments">
+    <div class="list-group">
+        <form action="comments" method="post">
+            <ul>
+                <li>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
 
 <label>Agrega un comentario:</label>
 <div class="input-group mb-3">
@@ -6,4 +15,4 @@
 </div>
 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Enviar</button>
 
-{* si es admin... borrar comentarios *}
+{* <script src="js/tareas.js"></script> *}
