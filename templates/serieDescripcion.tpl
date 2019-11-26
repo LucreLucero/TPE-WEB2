@@ -27,12 +27,15 @@
                 <li>>>Género: {$genderName ->name} </li>         
                 <li>>>Puntuación: {$serie ->score} </li> 
             </div>
-            {* SECCION DE COMENTARIOS EN EL TPL QUE TENEMOS QUE HACER CON API REST / JS *}
-            <div class="list-group-item">
-                <p>SECCION DE COMENTARIOS</p>
-                <p>y aca deberian de estar los comentarios cuando lo hagamos</p>
-            </div>
+            {* SECCION DE COMENTARIOS QUE MUESTRO SI SOY USUARIO *}
+            {* {if isset($smarty.session.ID_USER)} *}
+                <div class="list-group-item">
+                    <p>SECCION DE COMENTARIOS</p>
+                    {include file="./commentsVue.tpl"}
+                </div>
+            {* {/if} *}
         </ul>
-    {* </form> *}
 </div>
+{* agrego el archivo js *}
+<script src="js/comments.js"></script>
 

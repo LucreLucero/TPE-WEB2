@@ -15,7 +15,8 @@ class CommentsApiController{
     private function getData() {
         return json_decode($this->data);
     }
-    public function getComments($params = null){
+    // ----------------------------
+    public function getComments($params = []){
         $comments = $this ->model ->getAllComments();
         $this->view->response($comments, 200);
     }
