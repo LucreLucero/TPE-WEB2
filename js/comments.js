@@ -34,6 +34,7 @@ console.log("inicio");
         app.comments = comments;
     })
     .catch(error => console.log(error));
+    // promedio(id_serie);  
     }
 
     function addComment(e){
@@ -54,8 +55,9 @@ console.log("inicio");
                 'Content-Type' : 'application/json'
             },
             body : JSON.stringify(data)
-        }).then (response =>{
+        }).then (response =>{ 
             getComments(id);
+            promedio(id);
         })
         .catch(error=>console.log(error));
     }
@@ -71,17 +73,17 @@ console.log("inicio");
             },
         }).then (response =>{
             getComments(id);
+            promedio(id);
         })
         .catch(error=>console.log(error));
     }
 
     function promedio(id_serie){
-        event.preventDefault();
         let url = "../api/serie/" + id_serie + "/promedio";
         fetch(url)
         .then(response => response.json())
-        .then(prom => {
-            app.prom = prom;
+        .then(promedio => {
+            app.prom = promedio;
         })
         .catch(error => console.log(error));
 
@@ -92,7 +94,6 @@ console.log("inicio");
     
         let form = document.querySelector("#formAdd");
         console.log(form);
-        let id_serie = document.querySelector("input[name=id_serie]").value;
         console.log(id_serie);
         let admin = document.getElementById("admin");
         //console.log(admin.value);
@@ -101,6 +102,7 @@ console.log("inicio");
         }else{
             app.aux = false;
         }
-        getComments(id_serie);
-        promedio(id_serie);
     })
+    let id_serie = document.querySelector("input[name=id_serie]").value;
+    getComments(id_serie);
+    promedio(id_serie);

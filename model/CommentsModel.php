@@ -36,7 +36,7 @@ class CommentsModel{
     public function promedio($id_serie){
         $query = $this ->db ->prepare("SELECT ROUND(AVG(comentarios.score),2) AS promedio FROM comentarios WHERE id_serie = ?");
         $query->execute(array($id_serie));
-        $prom = $query ->fetchAll(PDO::FETCH_OBJ);
+        $prom = $query ->fetch(PDO::FETCH_OBJ);
         return $prom;
     }
    

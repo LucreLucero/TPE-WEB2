@@ -8,15 +8,15 @@
             {/foreach}
         </div>
         <div class="list-group-item">
-            <li>>>Nombre: {$serie ->name} </li>         
-            <li>>>Descripción: {$serie ->description} </li>
-            <li>>>Género: {$genderName ->name} </li>         
-            <li>>>Puntuación: {$serie ->score} </li> 
+            <li>Nombre: {$serie ->name} </li>         
+            <li>Descripción: {$serie ->description} </li>
+            <li>Género: {$genderName ->name} </li>         
+            <li>Puntuación: {$serie ->score} </li> 
         </div>
     {* aca puedo llamar a $series, $genero $imagenes *}
             {* SECCION DE COMENTARIOS QUE MUESTRO SI SOY USUARIO *}
         <div class="list-group-item">
-            <p>SECCION DE COMENTARIOS</p>
+            <h2>Comentarios</h2>
                 <input type="hidden" name="id_serie" value="{$serie->id_serie}"/>
             {* lista de comentarios con vue*}
                 {include file="./vue/commentsVue.tpl"}
