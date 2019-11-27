@@ -8,20 +8,18 @@ class CommentsApiController{
     private $data;
 
     public function __construct() {
-        $this->model = new CommentsModel();
         $this->view = new JSONView();
         $this->data = file_get_contents("php://input");
+        $this->model = new CommentsModel();
     }
-    private function getData() {
+    function getData(){ 
         return json_decode($this->data);
-    }
+    }  
     // ----------------------------
-    public function getComments($params = []){
-        $comments = $this ->model ->getAllComments();
-        $this->view->response($comments, 200);
-    }
+
     public function getComment($params = null){
-        $idComment = $params['ID'];
+        $idComment = $params[':ID'];
+
         $comment = $this ->model ->getComment($idComment);
         if($comment){
             $this ->view ->response($comment, 200);
@@ -29,27 +27,53 @@ class CommentsApiController{
             $this ->view ->response("Comentario no encontrado", 404);
         }
     }
-    public funtion deleteComment($params = null){
+    // traigo todos los comentarios que tiene una serie
+   public function getCommentsOfSerie ($params = null){
+        $id_serie = $params[':ID'];
+        $comments = $this ->model ->getComments($id_serie);
+        if($comments){
+            $this ->view ->response($comments, 200);
+        } else{
+            $this ->view ->response("El comentario no existe", 404);  
+        } 
+
+        
+   } 
+   public function addComment($params = null){
+        // $id_serie = $params[':ID'];
+        // var_dump($id_serie);die();
+
+           $data = $this->getData();
+           $idComment = $this ->model ->saveComment($data->comment,$data ->score, $data ->id_serie, $data ->id_user);
+           $comment = $this ->model ->getComment($idComment);
+           if($comment){
+               $this ->view ->response($comment, 200);
+           } else{
+               $this ->view ->response("El comentario no fue creado", 500);
+           }
+   }    
+
+    public function deleteComment($params = null){
         $id = $params[':ID'];
         $comment = $this ->model -> getComment($id);
         if($comment){
             $this ->model ->delete($id);
-            $this ->view ->response ("La tarea fue borrada con exito", 200);
+            $this ->view ->response ("El comentario fue borrada con exito", 200);
         } else{
-            $this ->view ->response ("La tarea con el id={$id} no existe", 404);
+            $this ->view ->response ("El comentario con el id={$id} no existe", 404);
         }
-        //OBTENER COMENTARIO
-        //si el comentario existe-> model-> borrar;
-        //sino, tarea no encontrada 
     }
-    public function addComment($params = null){
-            $data = $this ->getData();
-            $idComment = $this ->model ->save($data ->description);
-            $comment = $this ->model ->getComment($idComment);
-            if($comment){
-                $this ->view ->response($comment, 200);
-            } else{
-                $this ->view ->response("El comentario no fue creado", 500);
-            }
-    }    
+    public function promedio($params = null){
+        $id = $params[':ID'];
+        // $comment = $this ->model -> getComment($id);
+        if($id){
+            $prom = $this ->model ->promedio($id);
+            // var_dump ($prom);die;
+            $this ->view ->response ($prom, 200);
+        } else{
+            $this ->view ->response ("No se ha podido realizar el promedio", 404);
+        }
+    }
+    
+
 }

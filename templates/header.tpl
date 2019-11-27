@@ -7,7 +7,9 @@
         <script type="text/javascript" src="js/bootstrap.js"></script>
         <link rel="stylesheet" type="text/css" href="{$BASE_URL}css/bootstrap.min.css">
         <link rel="stylesheet" href="{$BASE_URL}css/estilos.css">
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> {*incluyo VUE para js*}
+
+        <!-- development version, includes helpful console warnings -->
+        {* <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> *}
 
         <title>Pagina de octi y lu</title>    
     </head>

@@ -5,9 +5,11 @@ class SerieView {
 
     private $smarty;
 
-    public function __construct(){
+    public function __construct($isAdmin = false){
         $this->smarty = new Smarty();
         $this -> smarty -> assign ('BASE_URL', BASE_URL);
+        $this -> smarty -> assign ('isAdmin', $isAdmin);
+
         $this -> smarty -> display ('templates/header.tpl');
         $this -> smarty -> display ('templates/index.tpl');        
 

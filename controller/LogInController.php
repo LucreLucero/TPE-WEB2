@@ -107,8 +107,8 @@ class LoginController{
     }    
     
     public function isAdmin(){
-        $this->isUser();
-        // if(isset($_SESSION['ID_USER'])){
+        // $this->isUser();
+        if(isset($_SESSION['ID_USER'])){
 
             $id_user = $_SESSION['ID_USER'];
             $user = $this ->model -> getByUserID($id_user);
@@ -118,8 +118,8 @@ class LoginController{
                 return false;
             }
             return true;
-        // }
-        // return false;
+        }
+        return false;
     }
 
     public function logout() {

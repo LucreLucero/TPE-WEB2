@@ -1,19 +1,22 @@
 <?php
-// route copiado de todo list
-    // require_once('Router.php');
-    // require_once('./api/task.api.controller.php');
-    
-    // // CONSTANTES PARA RUTEO
-    // define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
+require_once('Router.php');
+require_once('./api/CommentsApiController.php');
 
-    // $router = new Router();
+// CONSTANTES PARA RUTEO
+define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 
-    // // rutas
-    // $router->addRoute("/comments", "GET", "CommentsApiController", "getAllComments");
-    // $router->addRoute("/comments/:ID", "GET", "CommentsApiController", "getComment");
-    // $router->addRoute("/comments/:ID", "DELETE", "CommentsApiController", "deleteComment");
-    // $router->addRoute("/comments", "POST", "CommentsApiController", "addComment");
-    // $router->addRoute("/comments/:ID", "PUT", "CommentsApiController", "updateTask");
+$router = new Router();
 
-    // //run
-    // $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 
+// rutas
+// $router->addRoute("comments/", "GET", "CommentsApiController", "getComments");
+$router->addRoute("serie/:ID/comments/", "GET", "CommentsApiController", "getCommentsOfSerie");
+$router->addRoute("comments", "POST", "CommentsApiController", "addComment");
+$router->addRoute("comments/:ID", "DELETE", "CommentsApiController", "deleteComment");
+$router->addRoute("/serie/:ID/promedio", "GET", "CommentsApiController", "promedio");
+// $router->addRoute("/comments/:ID", "PUT", "CommentsApiController", "updateTask");
+
+//Ruta por defecto.
+//$r->setDefaultRoute("CommentsApiController", "getComments");
+
+//run
+$router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 
