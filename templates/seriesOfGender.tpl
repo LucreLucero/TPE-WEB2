@@ -8,7 +8,7 @@
 
             {/foreach}
         </ul> *}
-<div class="list-group">
+<div class="list-group" id="seriesDeGenero">
     <ul>
     {* <li>{$series ->name}</li> *}
     <p class="list-group-item active">Series</p>

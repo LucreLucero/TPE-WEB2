@@ -57,3 +57,10 @@ ul{
 img{
     max-width: 100%; 
 }
+#seriesDeGenero{
+    padding-left: 20%;  
+    width: 80%;
+}
+#LogOut, #login, #signin{
+    margin-right: 5px;
+    }

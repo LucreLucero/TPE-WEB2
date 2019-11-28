@@ -8,10 +8,10 @@
             {/foreach}
         </div>
         <div class="list-group-item">
-            <li>Nombre: {$serie ->name} </li>         
-            <li>Descripción: {$serie ->description} </li>
-            <li>Género: {$genderName ->name} </li>         
-            <li>Puntuación: {$serie ->score} </li> 
+            <li><span class="badge badge-pill badge-info">Nombre</span> {$serie ->name} </li>         
+            <li><span class="badge badge-pill badge-info">Descripción</span> {$serie ->description} </li>
+            <li><span class="badge badge-pill badge-info">Género</span> {$genderName ->name} </li>         
+            <li><span class="badge badge-pill badge-info">Puntuación</span> {$serie ->score} </li> 
         </div>
     {* aca puedo llamar a $series, $genero $imagenes *}
             {* SECCION DE COMENTARIOS QUE MUESTRO SI SOY USUARIO *}

@@ -92,8 +92,8 @@
                 <a class="nav-link" id="userName" disabled>{$smarty.session.USERNAME}</a>
                 <a href="{$BASE_URL}logout"><div class="btn btn-light" id="LogOut">Log Out</div></a>
               {else} 
-                <a href="{$BASE_URL}login"><div class="btn btn-light">Log In</div></a>
-                <a href="{$BASE_URL}signIn"><div class="btn btn-light">Sign In</div></a>
+                <a href="{$BASE_URL}login"><div class="btn btn-light" id="login">Log In</div></a>
+                <a href="{$BASE_URL}signIn"><div class="btn btn-secondary" id="signin">Sign In</div></a>
               {/if}
               
           </form>
