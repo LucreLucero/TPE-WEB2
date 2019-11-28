@@ -24,9 +24,10 @@
             {if $isAdmin}
                 <input hidden id="admin" value="true">  
                 {* si soy usuario pero no admin veo el formulario *}
-                {elseif (isset($smarty.session.ID_USER))}
+                {elseif (isset($smarty.session.ID_USER))}                
                     {include file="./comments-form.tpl"}
             {/if}
+                <input hidden id="user" value="{$userDates->name}"/> 
 
 
         </div>

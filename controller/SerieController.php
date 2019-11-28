@@ -32,6 +32,8 @@ class SerieController{
 
 // ----------------------------------------------------------
     public function showDescripcionSeries($params = null){
+        $userDates = $this ->LogInController -> getUser();
+        // var_dump($userDates); die;
         $idserieQueQuiero = $params[':ID'];
         $serie = $this ->getSerieEspecifica($idserieQueQuiero);
         $genderID = $serie ->id_gender;
@@ -39,8 +41,8 @@ class SerieController{
         $images = $this->serieModel-> getImage($serie->id_serie);
         // $comments = $this->commentsModel->getAllComments($serie->id_serie);
         // var_dump($images); die();
-
-        $this->serieView->showSerie($serie, $genero, $images);
+        // var_dump($userDates->name);
+        $this->serieView->showSerie($serie, $genero, $images, $userDates);
     }
     public function getSerieEspecifica($idserieQueQuiero){
         $serie = $this->serieModel->getSerieDescription($idserieQueQuiero);

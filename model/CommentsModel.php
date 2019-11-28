@@ -27,9 +27,9 @@ class CommentsModel{
         $comment = $query ->fetch(PDO::FETCH_OBJ);
         return $comment; 
     } 
-    public function saveComment($comment, $score, $id_serie, $id_user){
-        $query = $this ->db ->prepare("INSERT INTO comentarios(comment, score, id_serie, id_user) VALUES(?,?,?,?)");
-        $query->execute(array($comment, $score, $id_serie, $id_user));
+    public function saveComment($comment, $score, $id_serie, $id_user, $userName){
+        $query = $this ->db ->prepare("INSERT INTO comentarios(comment, score, id_serie, id_user, name) VALUES(?,?,?,?,?)");
+        $query->execute(array($comment, $score, $id_serie, $id_user, $userName));
         return $this ->db ->lastInsertId();
     }
 

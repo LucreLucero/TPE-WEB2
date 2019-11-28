@@ -16,6 +16,7 @@ console.log("inicio");
             auth: true,
             aux: [],
             prom : [],
+            us : [],
         },
         methods : {
             deleteComment : function (id_comment){
@@ -46,6 +47,7 @@ console.log("inicio");
             score : document.querySelector("input[name=score]").value,
             id_serie : document.querySelector("input[name=id_serie]").value,
             id_user : document.querySelector("input[name=id_user]").value,
+            userName : document.querySelector("input[name=userName]").value,
             // date = date.toUTCString()
         }
 
@@ -102,6 +104,10 @@ console.log("inicio");
         }else{
             app.aux = false;
         }
+        let user = document.getElementById("user").value;
+        app.us = user;
+        // console.log(user);
+    
     })
     let id_serie = document.querySelector("input[name=id_serie]").value;
     getComments(id_serie);

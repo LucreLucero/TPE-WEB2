@@ -44,7 +44,7 @@ class CommentsApiController{
         // var_dump($id_serie);die();
 
            $data = $this->getData();
-           $idComment = $this ->model ->saveComment($data->comment,$data ->score, $data ->id_serie, $data ->id_user);
+           $idComment = $this ->model ->saveComment($data->comment,$data ->score, $data ->id_serie, $data ->id_user, $data ->userName);
            $comment = $this ->model ->getComment($idComment);
            if($comment){
                $this ->view ->response($comment, 200);

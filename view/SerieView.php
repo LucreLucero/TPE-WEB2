@@ -15,16 +15,11 @@ class SerieView {
 
     }
 // MUESTRO LAS SERIES CON SU DESCRIPCION --ESTE ANDA
-    public function showSerie($serie, $genero, $images=null ){
-    // public function showSerie($serie, $genero){
-        // $this -> smarty -> assign ('BASE_URL', BASE_URL);
-        // var_dump($images); die();
+    public function showSerie($serie, $genero, $images=null, $userDates = null ){
         $this -> smarty -> assign ('genderName', $genero);
         $this -> smarty -> assign ('serie', $serie);
         $this -> smarty -> assign ('images', $images);
-
-        // $this -> smarty -> assign ('comments', $comments);        
-        
+        $this -> smarty -> assign ('userDates', $userDates);
         $this -> smarty -> display ('templates/serieDescripcion.tpl');
         $this -> smarty -> display ('templates/footer.tpl');
         

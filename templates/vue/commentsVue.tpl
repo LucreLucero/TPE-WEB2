@@ -6,6 +6,7 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr>
+                    <th scope="col">Usuario</th>
                     <th scope="col">Comentario</th>
                     <th scope="col">Puntaje</th>
                     <th scope="col"></th>
@@ -13,6 +14,7 @@
             </thead>
             <tbody>
                 <tr v-for="comment in comments">
+                        <td>{{comment.name}}</td>
                         <td>{{comment.comment}}</td>
                         <td>{{comment.score}}</td>
                         <td><span v-if="aux">                

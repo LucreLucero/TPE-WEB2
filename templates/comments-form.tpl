@@ -16,7 +16,10 @@
         <input type="text"  name= "comment" class="form-control" placeholder="Ingrese su comentario"/>
         <input type="number" name = "score" max = "5" min = "1" name= "scoreSerieEdit" placeholder="Puntaje" class="form-control" id="exampleFormControlSelect1"/>
         <input type="hidden" name="id_serie" value="{$serie->id_serie}"/>
-        <input type="hidden" name="id_user" value="1"/>
+        <input type="hidden" name="id_user" value="{$userDates->id_user}"/>
+        <input type="hidden" name="userName" value="{$userDates->name}"/>
+
+
         <button value="add" type="submit"  class="btn btn-outline-secondary">Enviar</button>
     </div>
 </form>

@@ -68,12 +68,8 @@ class LoginController{
             die();
         } 
     }
+
     public function checkLoggedIn(){
-        // session_destroy();
-        // session_start();//Crea una sesión en el servidor, si ya existe trae la existente.
-        
-        // var_dump($_SESSION);
-        // var_dump($_SESSION['ID_USER']); die();
         if(!isset($_SESSION['ID_USER'])){//si no está iniciada la sesion
             header('Location: '. home);
             die();//Luego de una redirección se suele llamar a la función
@@ -90,20 +86,17 @@ class LoginController{
             header('Location: '. BASE_URL . "home");die;
         };
     }
+    public function getUser(){
+        if(isset($_SESSION['ID_USER'])){
+            $id_user = $_SESSION['ID_USER'];
+            $userDates = $this ->model ->getByUserID($id_user);
+            return $userDates;
+        }
+    }
 
     public function isUser(){
         return (isset($_SESSION['ID_USER']));
 
-        //     $id_user = $_SESSION['ID_USER'];
-        //     $user = $this ->model -> getByUserID($id_user);
-        //     // var_dump($user);die;
-        //     if($user ->isAdmin == false){
-        //         // header('Location: '. BASE_URL . "home");die;
-        //         return true;
-        //     }
-        //     return false;
-        // }
-        // return return true;
     }    
     
     public function isAdmin(){
