@@ -13,16 +13,24 @@
 
         <title>Pagina de octi y lu</title>    
     </head>
-
+<!-- 
+    Nivel de estres:
+    ██ 20% *La semana pasada* 
+    ███ 40% *Hace 4 dias* 
+    ████ 60% *Hace 3 dias* 
+    █████ 80% *Ayer* 
+    ██████ 100% *Hoy* 
+                                ( ( (                   
+                                ) ) )                  
+                               ( ( (                  
+                             '. ___ .'              
+                            '  (> <) '                 
+                    --------ooO-(_)-Ooo----------  
+                          AMO MI CARRERA
+                              
+    -->
     <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      {* {if isset($smarty.session.USER_ADMIN)}
-        <a class="navbar-brand" href="{$BASE_URL}homeAdmin">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        {else} *}
-      {* {/if} *}
         {if $isAdmin = 1}
         <p>{$isAdmin}</p>
           <a class="navbar-brand" href="{$BASE_URL}homeAdmin">Cuevana</a>
@@ -35,18 +43,18 @@
             <li class="nav-item active">
               <a class="nav-link" href="{$BASE_URL}homeAdmin">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            {* <li class="nav-item">
               <a class="nav-link" href="{$BASE_URL}homeAdmin">Fechas</a>
-            </li>
+            </li> *}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="{$BASE_URL}homeAdmin" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Proximos eventos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="https://www.youtube.com/watch?v=ETY44yszyNc" target=_blank>The Witcher</a>
+                <a class="dropdown-item" href="https://www.youtube.com/watch?v=M1kuAdVKvuE" target=_blank>V Wars</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="https://www.youtube.com/watch?v=wUFwunMKa4E" target=_blank>LOVE DEATH + ROBOTS </a>
               </div>
             </li>
             <li class="nav-item">
@@ -65,19 +73,19 @@
           <li class="nav-item active">
             <a class="nav-link" href="{$BASE_URL}">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
+          {* <li class="nav-item">
             <a class="nav-link" href="{$BASE_URL}">Fechas</a>
-          </li>
+          </li> *}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="{$BASE_URL}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Proximos eventos
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+                <a class="dropdown-item" href="https://www.youtube.com/watch?v=ETY44yszyNc" target=_blank>The Witcher</a>
+                <a class="dropdown-item" href="https://www.youtube.com/watch?v=M1kuAdVKvuE" target=_blank>V Wars</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="https://www.youtube.com/watch?v=wUFwunMKa4E" target=_blank>LOVE DEATH + ROBOTS </a>
+              </div>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Contacto</a>
