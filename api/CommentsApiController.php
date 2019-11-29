@@ -34,7 +34,7 @@ class CommentsApiController{
         if($comments){
             $this ->view ->response($comments, 200);
         } else{
-            $this ->view ->response("El comentario no existe", 404);  
+            $this ->view ->response([], 200);  
         } 
 
         

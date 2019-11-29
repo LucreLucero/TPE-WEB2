@@ -2,6 +2,7 @@
 require_once('./model/GenderModel.php');
 require_once('./model/SerieModel.php');
 require_once('./model/UserModel.php');
+require_once('./model/CommentsModel.php');
 require_once('./view/GenderView.php');
 require_once('./controller/LogInController.php');
 
@@ -10,7 +11,7 @@ require_once('./controller/LogInController.php');
 class GenderController{
     private $LogInController;
     private $model;
-    // private $
+    private $commentsModel;
     private $modelSerie;
     private $view;
     // private $seriesView;
@@ -19,6 +20,7 @@ class GenderController{
         // session_start();//llamo al sesion start
         $this->LogInController = new LoginController();
         $this->model = new GenderModel();
+        $this->commentsModel = new CommentsModel();
         $this->modelSerie = new SerieModel();
         //paso la function al constructor por que siempre se van a mostrar los generos
         $isAdmin = $this ->LogInController ->isAdmin();
@@ -137,6 +139,7 @@ class GenderController{
         $serieID = $this->modelSerie ->getSeriesOfGender($genderID);
         foreach ($serieID as $serie ) {
             $ID = $serie->id_serie;
+            $this ->commentsModel ->deleteBySerie($ID);
             $this->modelSerie->deleteSerieByGender($ID);    
         }
      

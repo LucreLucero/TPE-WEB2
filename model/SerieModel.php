@@ -142,16 +142,27 @@ class SerieModel{
 
     }
     
-    public function deleteSerie($serieName){ //obtener un genero
+    public function deleteSerie($serieID){ //obtener un genero
         // var_dump($serieName);
         // die();
-        $this -> deleteImages($serieName);
+        $this -> deleteImages($serieID);
         $query = $this->db->prepare("DELETE FROM series WHERE id_serie = ?");
         //preparo para inserta en la tabla de genero el nuevo genero
-        $ok = $query->execute(array($serieName));
+        $ok = $query->execute(array($serieID));
         if(!$ok){
             var_dump($query->errorInfo());
             die();
         }
     }
+    // public function getIDSerieByName($name){ //obtener un genero
+    //     $query = $this->db->prepare("SELECT * FROM series WHERE name = ?");
+    //     //preparo para inserta en la tabla de genero el nuevo genero
+    //     $ok = $query->execute(array($name));
+    //     if(!$ok){
+    //         var_dump($query->errorInfo());
+    //         die();
+    //     }
+    //     $id_serie = $query->fetchAll(PDO::FETCH_ASSOC);
+    //     return $id_serie;
+    // }
 }

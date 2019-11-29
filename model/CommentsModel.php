@@ -49,5 +49,14 @@ class CommentsModel{
             die();
         }
     }
+    public function  deleteBySerie($id){ //obtener un genero
+        $query = $this->db->prepare("DELETE FROM comentarios WHERE id_serie = ?");
+        //preparo para inserta en la tabla de genero el nuevo genero
+        $ok = $query->execute(array($id));
+        if(!$ok){
+            var_dump($query->errorInfo());
+            die();
+        }
+    }
 
 }

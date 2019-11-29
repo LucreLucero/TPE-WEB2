@@ -9,7 +9,7 @@ require_once('./controller/LogInController.php');
 class SerieController{
     private $LogInController;
     private $serieModel;
-    // private $commentsModel;
+    private $commentsModel;
     private $serieView;
     private $GenderModel;
 
@@ -18,7 +18,7 @@ class SerieController{
         // session_start();
         $this->LogInController = new LoginController();
         $this->serieModel = new SerieModel();
-        // $this->commentsModel = new CommentsModel();
+        $this->commentsModel = new CommentsModel();
         $this->GenderModel = new GenderModel();    
         $isAdmin = $this ->LogInController ->isAdmin();    
         $this->serieView = new SerieView($isAdmin);
@@ -52,6 +52,7 @@ class SerieController{
 
     public function getSerie($serieNombre){
         $serie = $this->serieModel->getSerieDescription($serieNombre);
+        // var_dump($serie);die;
         // $ID = $serie->id_gender;
         // $this->serieView->showSerie($serie,);
         return $serie;
@@ -150,16 +151,23 @@ class SerieController{
             header("Location: " . BASE_URL . "series");
         }
     }
+    public function getIDSerieByName($serieName){
+        $idSerie = $this ->serieModel ->getSerieByName($serieName);
+        return $idSerie;
+    }
     public function deleteSerie(){
         $this ->LogInController ->checkLoggedIn();
         $this ->LogInController ->verifyAdmin();
         if(($_POST['serieDelete'])!=''){
             // var_dump($serieName);
             // die();
-            $serieName = $_POST['serieDelete'];
-            // var_dump($serieName);die;
+            $serieID = $_POST['serieDelete'];
+            // var_dump($serieID);die;
             // $imageID = $this->serieModel-> getImage($serie->id_serie);
-            $this->serieModel->deleteSerie($serieName);
+            // $id_serie = $this ->serieModel ->getIDSerieByName($serieName);
+            // var_dump($id_serie); die;
+            $this ->commentsModel ->deleteBySerie($serieID);
+            $this->serieModel->deleteSerie($serieID);
             header("Location: " . BASE_URL . "series");
 
         }
