@@ -97,7 +97,7 @@ class SerieController{
             }
             else{
                 var_dump("ya existe");die;
-                $this ->GenderController ->showIndexAdmin($existeSerie = true);
+                // $this ->GenderController ->showIndexAdmin($existeSerie = true);
                 
             }
         }   

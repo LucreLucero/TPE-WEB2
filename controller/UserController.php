@@ -26,7 +26,13 @@ class UserController{
         $this ->LogInController ->checkLoggedIn();
         $this ->LogInController ->verifyAdmin();
         $AdminOrUser = $this ->userModel ->convert($idUser);
-        $this ->view ->showUsers($AdminOrUser);
+        // var_dump($AdminOrUser);
+
+        // var_dump("aca tambien");die;
+        $users = $this ->userModel ->getUsers();
+        $this ->view ->showUsers($users);
+
+        // $this ->view ->showUsers($AdminOrUser);
         header("Location: " . BASE_URL . "users");
     }
 
